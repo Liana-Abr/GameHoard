@@ -1,0 +1,56 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'
+
+main = #EA581D
+
+bg = white
+
+dflex(f, a, j)
+    display: flex
+    flex-direction: f
+    align-items: a
+    justify-content: j
+
+body
+    margin 0
+    padding 0
+    dflex(column, center, flex-start)
+    font-family 'Roboto', sans-serif;
+
+.wrapper
+    width 50%
+
+
+.header
+    width: 100vw
+    height 50px
+    color main
+    font-weight bolder
+    border-bottom 1px main solid
+    dflex(row, center, center)
+    box-sizing border-box
+    .header__content
+        dflex(row, center, space-between)
+        height 100%
+        width 50%
+        .logo
+            width 95px
+        .header__tabs
+            list-style none
+            padding 0
+            margin 0
+            dflex(row, center, center)
+            height: 100%
+            width 40%
+            .tab__link
+                dflex(row, center, center)
+                text-decoration none
+                color inherit
+                height 100%
+                padding-left 15px
+                padding-right 15px
+                transition 0.1s all
+                &:hover
+                    background #00000015
+            .icon
+                width 25px
+

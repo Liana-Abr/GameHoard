@@ -1,0 +1,10 @@
+extends layout
+block styles 
+    link(rel="stylesheet", href="/style.css")
+block body 
+    if title
+        h1 #{title}
+    else
+        h1 Yeeaapppp
+    h2 #{caption}
+block scripts
