@@ -35,6 +35,17 @@ body {
 .header .header__content .logo {
   width: 95px;
 }
+.header .header__content .catalogue__popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  background: #fff;
+  border: 1px #ea581d solid;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.1s all easy-in;
+}
 .header .header__content .header__tabs {
   list-style: none;
   padding: 0;
@@ -46,7 +57,7 @@ body {
   height: 100%;
   width: 40%;
 }
-.header .header__content .header__tabs .tab__link {
+.header .header__content .header__tabs .header__tab {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -58,9 +69,17 @@ body {
   padding-right: 15px;
   transition: 0.1s all;
 }
-.header .header__content .header__tabs .tab__link:hover {
+.header .header__content .header__tabs .header__tab:hover {
   background: rgba(0,0,0,0.082);
 }
-.header .header__content .header__tabs .icon {
-  width: 25px;
+.header .header__content .header__tabs .icons {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0 0 0 30px;
+}
+.header .header__content .header__tabs .icons .icon {
+  width: 28px;
 }

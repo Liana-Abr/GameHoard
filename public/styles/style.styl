@@ -1,15 +1,17 @@
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'
 
+// Цвета
 main = #EA581D
-
 bg = white
 
+// Миксины
 dflex(f, a, j)
     display: flex
     flex-direction: f
     align-items: a
     justify-content: j
 
+// Стили
 body
     margin 0
     padding 0
@@ -34,6 +36,16 @@ body
         width 50%
         .logo
             width 95px
+        .catalogue__popup
+            position absolute
+            top 0
+            left 0
+            width 500px
+            background bg
+            border 1px main solid
+            opacity 0
+            visibility hidden
+            transition 0.1s all easy-in
         .header__tabs
             list-style none
             padding 0
@@ -41,7 +53,7 @@ body
             dflex(row, center, center)
             height: 100%
             width 40%
-            .tab__link
+            .header__tab
                 dflex(row, center, center)
                 text-decoration none
                 color inherit
@@ -51,6 +63,10 @@ body
                 transition 0.1s all
                 &:hover
                     background #00000015
-            .icon
-                width 25px
+            .icons
+                height 100%
+                dflex(row, flex-start, flex-start)
+                margin 0 0 0 30px
+                .icon
+                    width 28px
 
