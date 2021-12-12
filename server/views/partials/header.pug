@@ -1,28 +1,22 @@
-//- header(class="header")
-//-     div(class="header__content")
-//-         a(href="/" class="logo")
-//-             img(src="/images/IconText.svg" class="logo") 
-//-         div(class="header__tabs ъ") 
-//-             each i in links
-//-                 a(href=i.src class="tab__link") #{i.name}
-//-             a(href="/basket" class="tab__link icon")
-//-                 svg.icon(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-//-                     path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z")
-header(class="header")
-    div(class="header__content")
-        a(href="/" class="header__logo")
-            img(src="/images/IconText.svg" class="logo") 
-        div(class="catalogue__popup") ыыы
-        div(class="header__tabs")
+header.header
+    .header__content
+        a(href="/").header__logo
+            img(src="/images/IconText.svg").logo
+        .popup
+            .popup__content
+                .popup__tabs
+                    each i in catalogue_tabs
+                        a(href=i.url).popup__tab #{i.name}
+        .header__tabs
             each i in links
-                if i.src == "/catalogue"
-                    a(href=i.src class="tab header__tab") #{i.name}
+                if i.url == "/catalogue"
+                    a(href=i.url).tab.header__tab #{i.name}
                 else 
-                    a(href=i.src class="tab header__tab") #{i.name}
-            div(class="icons")
-                a(href="/profile" class="tab header__tab")
+                    a(href=i.url).tab.header__tab #{i.name}
+            .icons
+                a(href="/profile").tab.header__tab
                     svg.icon(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
                         path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z")
-                a(href="/profile" class="tab header__tab")
+                a(href="/profile").tab.header__tab
                     svg.icon(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
                         path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z")
