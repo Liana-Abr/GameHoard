@@ -15,43 +15,11 @@ const links = [
 // ];
 
 const catalogue_tabs = [
-    {
-        name: "Warhammer", url: "/catalogue/:warhammer", tabs: [
-            { name: "Warhammer 40000", url: "/catalogue/:warhammer?p=w4k" },
-            { name: "Warhammer Age of Sigmar", url: "/catalogue/:warhammer?p=waof" },
-            { name: "Коробочные Игры", url: "/catalogue/:warhammer?p=bg" },
-            { name: "Краски Citadel Colour", url: "/catalogue/:warhammer?p=ccc" }
-        ]
-    },
-    {
-        name: "ККИ", url: "/catalogue/:ccg", tabs: [
-            { name: "MTG", url: "/catalogue/:ccg?p=mtg" },
-            { name: "Gwent", url: "/catalogue/:ccg?p=gwent" },
-            { name: "Берсерк. Герои", url: "/catalogue/:ccg?p=berserk" },
-            { name: "Star Wars: Destiny", url: "/catalogue/:ccg?p=swd" }
-        ]
-    },
-    {
-        name: "Ролевые игры", url: "/catalogue/:rpgames", tabs: [
-            { name: "Dungeons&Dragons", url: "/catalogue/:rpgames?p=dnd" },
-            { name: "Pathfinder", url: "/catalogue/:rpgames?p=pf" },
-            { name: "Кориолис", url: "/catalogue/:rpgames?p=kor" },
-            { name: "Game of Thrones", url: "/catalogue/:rpgames?p=got" }
-        ]
-    },
-    {
-        name: "Пазлы и гловоломки", url: "/catalogue/:puzzles", tabs: [
-            { name: "Пазлы", url: "/catalogue/:puzzles?p=puzzles" },
-            { name: "Головоломки", url: "/catalogue/:puzzles?p=brainteaser" }
-        ]
-    },
-    {
-        name: "Сборные модели", url: "/catalogue/:models", tabs: [
-            { name: "Техника", url: "/catalogue/:models?p=tech" },
-            { name: "Авиация", url: "/catalogue/:models?p=aviation" },
-            { name: "Автомобили", url: "/catalogue/:models?p=cars" }
-        ]
-    }
+    { name: "Warhammer", url: "/catalogue/:warhammer" },
+    { name: "ККИ", url: "/catalogue/:ccg" },
+    { name: "Ролевые игры", url: "/catalogue/:rpgames" },
+    { name: "Пазлы и гловоломки", url: "/catalogue/:puzzles" },
+    { name: "Сборные модели", url: "/catalogue/:models" }
 ];
 
 router.get("/", (req, res) => {

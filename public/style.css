@@ -12,30 +12,7 @@ body {
 .wrapper {
   width: 50%;
 }
-.header {
-  width: 100vw;
-  height: 50px;
-  color: #ea581d;
-  font-weight: bolder;
-  border-bottom: 1px #ea581d solid;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-.header .header__content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  width: 50%;
-}
-.header .header__content .logo {
-  width: 95px;
-}
-.header .header__content .popup {
+.popup {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -45,17 +22,39 @@ body {
   left: 0;
   width: 100%;
   background: #fff;
+  font-weight: bolder;
   border: 1px #ea581d solid;
+  border-top: 0px;
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s all;
+  transition: 0.2s all;
   padding-right: 20px;
+  z-index: 2;
 }
-.header .header__content .popup .popup__content {
+.popup .popup__content {
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
-.header .header__content .popup .popup__content .popup__tabs {
+.popup .popup__content .popup__container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15px;
+}
+.popup .popup__content .popup__container a {
+  text-decoration: none;
+  color: #000;
+}
+.popup .popup__content .popup__container a:hover {
+  color: #ea581d;
+}
+.popup .popup__content .popup__tabs {
   height: 100%;
   width: 40%;
   display: flex;
@@ -65,7 +64,7 @@ body {
   border-right: 1px solid #ea581d;
   border-left: 1px solid #ea581d;
 }
-.header .header__content .popup .popup__content .popup__tabs .popup__tab {
+.popup .popup__content .popup__tabs .popup__tab {
   width: 100%;
   height: 60px;
   display: flex;
@@ -77,8 +76,33 @@ body {
   text-decoration: none;
   color: #ea581d;
 }
-.header .header__content .popup .popup__content .popup__tabs .popup__tab:hover {
+.popup .popup__content .popup__tabs .popup__tab:hover {
   background: #fff1e3;
+}
+.header {
+  background: #fff;
+  width: 100vw;
+  height: 50px;
+  color: #ea581d;
+  font-weight: bolder;
+  border-bottom: 1px #ea581d solid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  z-index: 4;
+}
+.header .header__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 50%;
+}
+.header .header__content .logo {
+  width: 95px;
 }
 .header .header__content .header__tabs {
   list-style: none;

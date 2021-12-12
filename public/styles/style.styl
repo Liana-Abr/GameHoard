@@ -22,8 +22,52 @@ body
 .wrapper
     width 50%
 
-
+.popup
+    position absolute
+    dflex(column, center, center)
+    top 30px
+    left 0
+    width 100%
+    background bg
+    font-weight bolder
+    border 1px main solid
+    border-top 0px
+    opacity 0
+    visibility hidden
+    transition 0.2s all
+    padding-right 20px
+    z-index 2
+    .popup__content
+        width 50%
+        height 100%
+        dflex(row, center, flex-start)
+        .popup__container
+            width 60%
+            dflex(column, center, space-around)
+            gap 15px
+            a
+                text-decoration none
+                color black
+                &:hover
+                    color main
+        .popup__tabs
+            height 100%
+            width 40%
+            dflex(column, flex-start, space-around)
+            border-right 1px solid main
+            border-left 1px solid main
+            .popup__tab
+                width 100%
+                height 60px
+                dflex(row, center, center)
+                transition 0.1s all
+                cursor pointer
+                text-decoration none
+                color main
+                &:hover
+                    background second
 .header
+    background bg
     width: 100vw
     height 50px
     color main
@@ -31,44 +75,13 @@ body
     border-bottom 1px main solid
     dflex(row, center, center)
     box-sizing border-box
+    z-index 4
     .header__content
         dflex(row, center, space-between)
         height 100%
         width 50%
         .logo
             width 95px
-        .popup
-            position absolute
-            dflex(column, center, center)
-            top 30px
-            left 0
-            width 100%
-            background bg
-            border 1px main solid
-            opacity 0
-            visibility hidden
-            transition 0.3s all
-            padding-right 20px
-            .popup__content
-                width 50%
-                height 100%
-                .popup__tabs
-                    height 100%
-                    width 40%
-                    dflex(column, flex-start, space-around)
-                    border-right 1px solid main
-                    border-left 1px solid main
-                    .popup__tab
-                        width 100%
-                        height 60px
-                        dflex(row, center, center)
-                        transition 0.1s all
-                        cursor pointer
-                        text-decoration none
-                        color main
-                        &:hover
-                            background second
-
         .header__tabs
             list-style none
             padding 0

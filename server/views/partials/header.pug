@@ -1,12 +1,14 @@
+.popup
+    .popup__content
+        .popup__tabs
+            each i in catalogue_tabs
+                a(href=i.url).popup__tab #{i.name}
+        .popup__container 
+            p Пока ничего нету
 header.header
     .header__content
         a(href="/").header__logo
             img(src="/images/IconText.svg").logo
-        .popup
-            .popup__content
-                .popup__tabs
-                    each i in catalogue_tabs
-                        a(href=i.url).popup__tab #{i.name}
         .header__tabs
             each i in links
                 if i.url == "/catalogue"
