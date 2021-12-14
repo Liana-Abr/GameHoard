@@ -1,4 +1,4 @@
-@import 'D:\#Everything!!!\#Code\#Projects\#RealCoding\WorkWithServers\NodeJS\Express\#Projects\project\node_modules\stylus\lib\functions\index.styl';
+@import 'D:\#Everything!!!\#Code\#Projects\#RealCoding\WorkWithServers\NodeJS\Express\#Projects\GameHoard\node_modules\stylus\lib\functions\index.styl';
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap';
 body {
   height: 100vh;
@@ -171,6 +171,9 @@ body {
   color: #ff6a00;
   padding: 2px;
   text-decoration: none;
+}
+.footer #footer a:hover {
+  text-decoration: underline;
 }
 h3 {
   color: #ff6a00;
