@@ -10,3 +10,6 @@
 # А теперь серьёзно. Кто ещё не скачал Gwent: The Witcher Card Game?  Ну я и чо?
 
 ## P.S. перед началом работы пропишите npm i
+
+![image](https://user-images.githubusercontent.com/79605237/146521885-f69d138f-9025-4a3c-bab4-f1693e080729.png)
+
