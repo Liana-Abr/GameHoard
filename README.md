@@ -12,4 +12,5 @@
 ## P.S. перед началом работы пропишите npm i
 
 ![image](https://user-images.githubusercontent.com/79605237/146521885-f69d138f-9025-4a3c-bab4-f1693e080729.png)
+![image](https://user-images.githubusercontent.com/79605237/146522055-04918b1f-ae95-402f-96ea-afb58e71e5d2.png)
 
