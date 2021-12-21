@@ -2,6 +2,7 @@ const express = require("express");
 const mainRouter = require("./server/routes/mainRouter.js");
 const port = process.env.PORT || 8080;
 const stylus = require("stylus");
+const autoprefixer = require('autoprefixer-stylus');
 
 const app = express();
 
@@ -9,7 +10,8 @@ app.use(stylus.middleware({
     src: "./public/styles",
     dest: "./public",
     debug: true,
-    force: true
+    force: true,
+    use: [autoprefixer({ overrideBrowserslist: ['ie 7', 'ie 8'] })]
 }));
 
 app.set("views", "./server/views");

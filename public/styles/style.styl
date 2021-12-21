@@ -2,15 +2,16 @@
 
 // Цвета
 main = #EA581D
-second = #FFF1E3
+main2 = #212121
+second = #FF6A00
 bg = white
 
 // Миксины
 dflex(f, a, j)
-    display: flex
-    flex-direction: f
-    align-items: a
-    justify-content: j
+    display flex
+    flex-direction f
+    align-items a
+    justify-content j
 
 // Стили
 
@@ -66,13 +67,19 @@ body
                 color main
                 &:hover
                     background second
+.logo
+    width 135px
+.icon
+    color main2
+    width 28px
+    &:hover
+        color main
 .header
     background bg
-    width: 100%
+    width 100%
     height 50px
-    color main
+    color main2
     font-weight bolder
-    border-bottom 1px main solid
     dflex(row, center, center)
     box-sizing border-box
     z-index 4
@@ -86,9 +93,8 @@ body
             list-style none
             padding 0
             margin 0
-            dflex(row, center, flex-end)
-            height: 100%
-            width 60%
+            dflex(row, center, center)
+            height 100%
             .header__tab
                 dflex(row, center, center)
                 text-decoration none
@@ -97,43 +103,73 @@ body
                 padding-left 15px
                 padding-right 15px
                 transition 0.1s all
+                border-bottom 2px #00000000 solid
                 &:hover
-                    background second
+                    border-bottom 2px main solid
+                    color main
             .active
-                background second
-                box-shadow: inset 0 0px 10px 1px rgba(0,0,0,0.5);
-            .icons
+                border-bottom 2px main solid
+                color main
+        .header__icons
+            height 100%
+            width 8%
+            dflex(row, center, space-between)
+        .header__search 
+            width 20%
+            height 50%
+            dflex(row, center, center)
+            input
+                width 100%
+                outline none
+                border-radius 0px
+                border 1px solid #C1C1C1
                 height 100%
-                dflex(row, flex-start, flex-start)
-                margin 0 0 0 30px
-                .icon
-                    width 28px
 
 // ------------------------FOOTER------------------------- //
-
-.footer
-    dflex(column, center, flex-start)
+footer
+    dflex(row, center, center)
     width 100%
     position absolute
     bottom 0
     border-top 1px solid main
     font-size 15px
-    #footer
+    height 356px
+    color #CBCFD4
+    background #212121
+    .footer__container
+        dflex(row, flex-start, space-between)
+        height 70%
         width 50%
-        border-right 1px solid main
-        border-left 1px solid main
-        th 
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            width auto
-            color: #ff6a00;
-        a
-            color #FF6A00
-            padding 2px
-            text-decoration none
-            &:hover
-                text-decoration underline
+        bottom 0
+        font-size 15px
+        .footer__about
+            width 30%
+            a
+                color #FF6A00
+                padding 2px
+                text-decoration none
+                &:hover
+                    text-decoration underline
+        .footer__links
+            width 70%
+            dflex(row, flex-start, flex-end)
+            ul
+                margin 0
+                list-style none
+                .links__header
+                    font-size 13px
+                    font-weight bold
+            th 
+                padding-bottom 12px
+                text-align left
+                width auto
+                color #ff6a00
+            a
+                color #FF6A00
+                padding 2px
+                text-decoration none
+                &:hover
+                    text-decoration underline
 
 h3
    color #ff6a00

@@ -1,18 +1,10 @@
 const router = require("express").Router();
 
 const links = [
+    { name: "Главная", url: "/" },
     { name: "Каталог", url: "/catalogue" },
-    { name: "Контакты", url: "/contacts" }
+    { name: "О нас", url: "/contacts" }
 ];
-
-// const catalogue_tabs = [
-//     { name: "Ролевые игры", url: "/catalogue/:rpgames" },
-//     { name: "ККИ", url: "/catalogue/:ccg" },
-//     { name: "Warhammer", url: "/catalogue/:warhammer" },
-//     { name: "Пазлы и гловоломки", url: "/catalogue/:puzzles" },
-//     { name: "Книги и комиксы", url: "/catalogue/:bc" },
-//     { name: "Сборные модели", url: "/catalogue/:models" }
-// ];
 
 const catalogue_tabs = [
     { name: "Warhammer", url: "/catalogue/:warhammer" },
