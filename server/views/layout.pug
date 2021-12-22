@@ -11,8 +11,7 @@ html(lang="zxx")
         script(src="#") 
         //- Не удаляем пока не сделаем загрузку. (Пустой скрипт с ссылкой убирает анимации)
         include partials/header.pug
-        .wrapper
-            block body
+        block body
         include partials/footer.pug
         block scripts
         script(src="/scripts/script.js")

@@ -14,11 +14,42 @@ const catalogue_tabs = [
     { name: "Сборные модели", url: "/catalogue/:models" }
 ];
 
+const products = [
+    {
+        ID_Product: "123abc", Name_Product: "Мафия1",
+        Izdatel_ID: "123abc", Date_Vypusk_Product: Date(22 - 12 - 2021),
+        Category_ID: "123abc", Podcategory_ID: "123abc",
+        Min_Igrok_Product: 4, Vozrast_Ogranich_Product: 16,
+        Opisanie_Product: 'Классическая Мафия для небольшой компании друзей',
+        Price_Product: 40000, Skidka_Product: null,
+        Vremya_Igri_Product: 30, Img_Product: 'mafia.jpg'
+    },
+    {
+        ID_Product: "123abc", Name_Product: "Мафия2",
+        Izdatel_ID: "123abc", Date_Vypusk_Product: Date(22 - 12 - 2021),
+        Category_ID: "123abc", Podcategory_ID: "123abc",
+        Min_Igrok_Product: 4, Vozrast_Ogranich_Product: 16,
+        Opisanie_Product: 'Классическая Мафия для небольшой компании друзей',
+        Price_Product: 40000, Skidka_Product: null,
+        Vremya_Igri_Product: 30, Img_Product: 'mafia.jpg'
+    },
+    {
+        ID_Product: "123abc", Name_Product: "Мафия3",
+        Izdatel_ID: "123abc", Date_Vypusk_Product: Date(22 - 12 - 2021),
+        Category_ID: "123abc", Podcategory_ID: "123abc",
+        Min_Igrok_Product: 4, Vozrast_Ogranich_Product: 16,
+        Opisanie_Product: 'Классическая Мафия для небольшой компании друзей',
+        Price_Product: 40000, Skidka_Product: null,
+        Vremya_Igri_Product: 30, Img_Product: 'mafia.jpg'
+    },
+];
+
 router.get("/", (req, res) => {
     res.render("index", {
         title: "Настольные игры",
         links: links,
         catalogue_tabs: catalogue_tabs,
+        products: products,
         class: "dark"
     });
 });

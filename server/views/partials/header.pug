@@ -12,7 +12,7 @@ header.header
         .header__tabs
             each i in links
                 if i.url == "/catalogue"
-                    a(href=i.url).tab.header__tab #{i.name}
+                    a(href=i.url).tab.header__tab.catalogue #{i.name}
                 else 
                     a(href=i.url).tab.header__tab #{i.name}
         .header__search

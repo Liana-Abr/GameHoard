@@ -1,8 +1,8 @@
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'
 
 // Цвета
-main = #EA581D
-main2 = #212121
+main = #EA581D // Оранжевый
+main2 = #212121 // Тёмный
 second = #FF6A00
 bg = white
 
@@ -14,13 +14,14 @@ dflex(f, a, j)
     justify-content j
 
 // Стили
-
 body
-    height 100vh
+    height 100%
+    min-height 100vh
     margin 0
     padding 0
-    dflex(column, center, flex-start)
+    dflex(column, center, space-between)
     font-family 'Roboto', sans-serif;
+    gap 30px
 
 .wrapper
     width 50%
@@ -33,7 +34,8 @@ body
     width 100%
     background bg
     font-weight bolder
-    border-bottom 1px main solid
+    border-bottom 1px main2 solid
+    border-top 1px main2 solid
     opacity 0
     visibility hidden
     transition 0.2s all
@@ -48,15 +50,15 @@ body
             gap 15px
             a
                 text-decoration none
-                color black
+                color main2
                 &:hover
                     color main
         .popup__tabs
             height 100%
             width 40%
             dflex(column, flex-start, space-around)
-            border-right 1px solid main
-            border-left 1px solid main
+            border-right 1px solid main2
+            border-left 1px solid main2
             .popup__tab
                 width 100%
                 height 60px
@@ -64,9 +66,10 @@ body
                 transition 0.1s all
                 cursor pointer
                 text-decoration none
-                color main
+                color main2
                 &:hover
-                    background second
+                    background main
+                    color #fff
 .logo
     width 135px
 .icon
@@ -75,11 +78,11 @@ body
     &:hover
         color main
 .header
-    background bg
     width 100%
     height 50px
     color main2
     font-weight bolder
+    background bg
     dflex(row, center, center)
     box-sizing border-box
     z-index 4
@@ -129,8 +132,6 @@ body
 footer
     dflex(row, center, center)
     width 100%
-    position absolute
-    bottom 0
     border-top 1px solid main
     font-size 15px
     height 356px
@@ -156,6 +157,7 @@ footer
             ul
                 margin 0
                 list-style none
+                font-size 18px
                 .links__header
                     font-size 13px
                     font-weight bold
@@ -171,5 +173,73 @@ footer
                 &:hover
                     text-decoration underline
 
-h3
-   color #ff6a00
+.news
+    width 100%
+    height 160px
+    background main2
+    dflex(row, center, center)
+    color #ffffff
+    .news__container
+        dflex(column, center, space-around)
+        width 50%
+        height 100%
+
+.product
+    dflex(column, center, center)
+    gap 10px
+    min-height 100%
+    height 100%
+    h1
+        text-align center
+        margin 0
+    .product__container
+        width 100%
+        height auto
+        dflex(row, flex-start, center)
+        gap 40px
+        flex-wrap wrap
+        .card
+            width 243px
+            height 387px
+            background #FFFFFF
+            box-shadow 0 0 18px 2px #00000025
+            dflex(column, center, space-around)
+            margin-right 10px
+            margin-left 10px
+            padding 10px
+            .card__img
+                width 65%
+                .card__img__src
+                    width 100%
+
+            .card__info
+                dflex(row, center, space-between)
+                width 60%
+                margin-top 5px
+            .card__button
+                width 60%
+                height 44px
+                text-decoration none
+                dflex(row, center, space-between)
+                transition 0.5s all
+                &:hover
+                    .button__content
+                        width 0%
+                    .button__icon
+                        width 100%
+                .button__content
+                    height 100%
+                    width 70%
+                    background main
+                    transition 0.5s all
+                    dflex(row, center, center)
+                    color #ffffff
+                .button__icon
+                    dflex(row, center, center)
+                    height 100%
+                    width 30%
+                    background main2
+                    transition 0.5s all
+                    svg
+                        width 22px
+                        color #ffffff
