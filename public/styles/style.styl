@@ -161,17 +161,14 @@ footer
                 .links__header
                     font-size 13px
                     font-weight bold
-            th 
-                padding-bottom 12px
-                text-align left
-                width auto
-                color #ff6a00
-            a
-                color #FF6A00
+                    text-decoration none
+            li
+                color #fff
                 padding 2px
                 text-decoration none
                 &:hover
                     text-decoration underline
+                    cursor pointer
 
 .news
     width 100%
@@ -183,6 +180,37 @@ footer
         dflex(column, center, space-around)
         width 50%
         height 100%
+        h1
+            font-weight bold
+.email__connect
+    width 100%
+    height 110px
+    background main2
+    dflex(row, center, center)
+    color #ffffff
+    .email__container
+        dflex(row, center, space-between)
+        gap 20px    
+        width 50%
+        height 100%
+        h1
+            width 50%
+        .inp__container
+            width 40%
+            dflex(row, center, space-between)
+            gap 20px
+            input
+                height 30px
+                width 50%
+                border-radius none
+                border none
+                outline none
+                padding 0
+            input[type="submit"]
+                background main
+                color #ffffff
+            input[type="text"]
+                padding-left 10px
 
 .product
     dflex(column, center, center)
@@ -211,7 +239,6 @@ footer
                 width 65%
                 .card__img__src
                     width 100%
-
             .card__info
                 dflex(row, center, space-between)
                 width 60%
@@ -219,7 +246,6 @@ footer
             .card__button
                 width 60%
                 height 44px
-                text-decoration none
                 dflex(row, center, space-between)
                 transition 0.5s all
                 .button__content
@@ -230,6 +256,7 @@ footer
                     dflex(row, center, center)
                     color #ffffff
                     cursor pointer
+                    text-decoration none
                 .button__icon
                     dflex(row, center, center)
                     height 100%
@@ -241,3 +268,43 @@ footer
                     svg
                         width 22px
                         color #ffffff
+
+.product__page
+    min-height 100%
+    height 100%
+    dflex(row, flex-start, space-around)
+    .product__page__content
+        margin-top 60px
+        width 50%
+        height 100%
+        h1
+            text-align center
+            margin 0
+        p
+            font-size 18px
+        dflex(column, flex-start, space-around)
+        gap 20px
+        .product__page__info
+            width 100%
+            dflex(row, center, flex-start)
+            gap 20px
+    .product__page__image
+        width 50%
+        height 100%
+        dflex(column, flex-start, flex-start)
+        img
+            width 100%
+    .product__page__button
+        font-weight bold
+        width 50%
+        height 50px
+        background main2
+        text-decoration none
+        color #fff
+        dflex(row, center, center)
+        text-align center
+        z-index 5
+        &:hover
+            background main
+            color main2
+            

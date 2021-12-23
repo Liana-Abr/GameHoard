@@ -1,0 +1,21 @@
+extends layout
+block head 
+    link(rel="stylesheet", href="/style.css")
+block body
+    .news
+        .news__container 
+            h1 БЕСПЛАТНАЯ ДОСТАВКА ОТ 3000₽
+            p Сделайте заказ и получите подарок!
+    .wrapper
+            .product__page   
+                .product__page__image 
+                    img(src='/images/'+product.Img_Product alt=product.Name_Product)
+                .product__page__content
+                    h1 #{product.Name_Product}
+                    p #{product.Opisanie_Product}
+                    .product__page__info 
+                        .product__page__age #{product.Vozrast_Ogranich_Product}+ 
+                        .product__page__people #{product.Min_Igrok_Product}+ 
+                        .product__page__time #{product.Vremya_Igri_Product}мин+
+                    a(href=product.ID_Product).product__page__button Добавить в корзину 
+block scripts

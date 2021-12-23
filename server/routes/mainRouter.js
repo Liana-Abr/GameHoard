@@ -78,12 +78,16 @@ router.get("/catalogue", (req, res) => {
     });
 });
 
-router.get('/catalogue/:name', (req, res) => {
-    res.render('catalogue', {
-        title: 'Каталог',
-        caption: req.params.name,
+router.get('/catalogue/:id', (req, res) => {
+    // let product = Product.query({ ID_Product=req.params.id });
+    let product = products[0];
+    res.render('product', {
+        product: product,
+        // title: product.Name_Product,
+        // caption: product.Opisanie_Product,
         links: links,
-        catalogue_tabs: catalogue_tabs
+        catalogue_tabs: catalogue_tabs,
+
     });
 });
 
