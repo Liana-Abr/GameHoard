@@ -222,11 +222,6 @@ footer
                 text-decoration none
                 dflex(row, center, space-between)
                 transition 0.5s all
-                &:hover
-                    .button__content
-                        width 0%
-                    .button__icon
-                        width 100%
                 .button__content
                     height 100%
                     width 70%
@@ -234,12 +229,15 @@ footer
                     transition 0.5s all
                     dflex(row, center, center)
                     color #ffffff
+                    cursor pointer
                 .button__icon
                     dflex(row, center, center)
                     height 100%
                     width 30%
                     background main2
                     transition 0.5s all
+                    cursor pointer
+
                     svg
                         width 22px
                         color #ffffff

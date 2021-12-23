@@ -311,22 +311,17 @@ footer .footer__container .footer__links a:hover {
   justify-content: space-between;
   transition: 0.5s all;
 }
-.product .product__container .card .card__button:hover .button__content {
-  width: 0%;
-}
-.product .product__container .card .card__button:hover .button__icon {
-  width: 100%;
-}
 .product .product__container .card .card__button .button__content {
   height: 100%;
   width: 70%;
   background: #ea581d;
-  transition: 1s all ease-in-out;
+  transition: 0.5s all;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   color: #fff;
+  cursor: pointer;
 }
 .product .product__container .card .card__button .button__icon {
   display: flex;
@@ -337,6 +332,7 @@ footer .footer__container .footer__links a:hover {
   width: 30%;
   background: #212121;
   transition: 0.5s all;
+  cursor: pointer;
 }
 .product .product__container .card .card__button .button__icon svg {
   width: 22px;

@@ -41,7 +41,7 @@ const products = [
         Opisanie_Product: 'Классическая Мафия для небольшой компании друзей',
         Price_Product: 40000, Skidka_Product: null,
         Vremya_Igri_Product: 30, Img_Product: 'mafia.jpg'
-    },
+    }
 ];
 
 router.get("/", (req, res) => {
