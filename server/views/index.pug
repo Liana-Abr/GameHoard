@@ -11,24 +11,55 @@ block body
             h1 ХИТ ПРОДАЖ
             .product__container
                 each i in products
+                    .card
+                        .card__img
+                            img(src='/images/'+i.Img_Product alt=i.Name_Product).card__img__src
+                        p.card__title #{i.Name_Product} 
+                        h2.card__price ₽ #{i.Price_Product} 
+                        .card__button
+                            a(href='/catalogue/:' + i.Category_ID + '?podcat=' + i.Podcategory_ID + '&i=' + i.ID_Product).button__content Купить 
+                            .button__icon  
+                                svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor") 
+                                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z") 
+                        .card__info 
+                            .age__block 
+                                .age #{i.Vozrast_Ogranich_Product}+ 
+                            .people__block
+                                img(src='/images/mainIcons/people.svg' alt=i.Name_Product).card__img__src
+                                .people #{i.Min_Igrok_Product}+ 
+                            .time__block 
+                                img(src='/images/mainIcons/time.svg' alt=i.Name_Product).card__img__src
+                                .time #{i.Vremya_Igri_Product}+
+            a(href="/catalogue/top").product__top__btn.showmore__btn ПОКАЗАТЬ ВСЕ
+    .email__connect
+        form(method="POST" action="/").email__container
+            h2 ПОЛУЧАЙТЕ СКИДКИ И ПОДАРКИ
+            .inp__container 
+                input(type="email" placeholder="Ваше e-mail" required)
+                input(type="submit", value="ПОДПИСАТЬСЯ")
+    .wrapper
+        .product
+            h1 НОВИНКИ
+            .product__container
+                each i in newproduct
                     .card  
                         .card__img
                             img(src='/images/'+i.Img_Product alt=i.Name_Product).card__img__src
                         p.card__title #{i.Name_Product} 
                         h2.card__price ₽ #{i.Price_Product} 
                         .card__button
-                            a(href='/catalogue/'+i.ID_Product).button__content Купить 
+                            a(href='/catalogue/:' + i.Category_ID + '?p=' + i.Podcategory_ID + '&i=' + i.ID_Product).button__content Купить 
                             .button__icon  
                                 svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor") 
                                     path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z") 
                         .card__info 
-                            .age #{i.Vozrast_Ogranich_Product}+ 
-                            .people #{i.Min_Igrok_Product}+ 
-                            .time #{i.Vremya_Igri_Product}мин+
-    .email__connect
-        form(method="POST" action="/send_email").email__container
-            h2 ПОЛУЧАЙТЕ СКИДКИ И ПОДАРКИ
-            .inp__container 
-                input(type="text" placeholder="Ваше e-mail" required)
-                input(type="submit", value="ПОДПИСАТЬСЯ")
+                            .age__block 
+                                .age #{i.Vozrast_Ogranich_Product}+ 
+                            .people__block
+                                img(src='/images/mainIcons/people.svg' alt=i.Name_Product).card__img__src
+                                .people #{i.Min_Igrok_Product}+ 
+                            .time__block 
+                                img(src='/images/mainIcons/time.svg' alt=i.Name_Product).card__img__src
+                                .time #{i.Vremya_Igri_Product}+
+            a(href="/catalogue/new").product__new__btn.showmore__btn ВСЕ НОВИНКИ
 block scripts

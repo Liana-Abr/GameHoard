@@ -1,8 +1,102 @@
 extends layout
 block head 
     link(rel="stylesheet", href="/style.css")
-block body 
-    h1 #{title}
-    if caption
-        h2 #{caption}
+block body
+    .container
+        .email__connect
+            form(method="POST" action="/send_email").email__container
+                h2 ПОЛУЧАЙТЕ СКИДКИ И ПОДАРКИ
+                .inp__container 
+                    input(type="text" placeholder="Ваше e-mail" required)
+                    input(type="submit", value="ПОДПИСАТЬСЯ")
+        .popup
+            .popup__content
+                .popup__tabs
+                    each i in catalogue_tabs
+                        a(href=i.url).popup__tab #{i.name}
+                .popup__container 
+                    p Пока ничего нету
+        .path 
+            p #{path}
+    .wrapper
+        .catalogue
+            .catalogue__sideblocks
+                form.sideblocks__filters(method="GET" action="/catalogue")
+                    .filters__price
+                        .price__text 
+                            div Цена
+                            output( for="price").price-output от 0 ₽
+                        .price__range
+                            input(type="range" min="0" max="30000" step="100" value="0" name="price")
+                    .filters__time
+                        .price__text 
+                            div Длительность
+                        input(type="radio" name="time" value="20+")
+                        input(type="radio" name="time" value="60+")
+                        input(type="radio" name="time" value="120+")
+                    .filters__age
+                        div Возраст
+                        input(type="radio" name="age" value="6+")
+                        input(type="radio" name="age" value="14+")
+                        input(type="radio" name="age" value="18+")
+                    .filters__people
+                        div Кол-во игроков
+                        input(type="radio" name="people" value="1")
+                        input(type="radio" name="people" value="2-4")
+                        input(type="radio" name="people" value="5-8")
+                    .filters__checkbox
+                        .checkbox
+                            label(for="new") Новинка
+                            input(type="checkbox", name="new")
+                        .checkbox
+                            label(for="sale") Со скидкой
+                            input(type="checkbox", name="sale")
+                        .checkbox
+                            label(for="vnalichii") В наличии
+                            input(type="checkbox", name="vnalichii")
+                    .filters__submit
+                        input(type="submit", name="submit" value="Поиск")
+                .sideblocks__daygame
+                    h2 Игра дня
+                    img(src='/images/' + daygame.Img_Product alt=daygame.Name_Product).daygame__img
+                    p.daygame__title #{daygame.Name_Product}
+                    p #{daygame.Opisanie_Product} 
+                    .card__info.daygame__info
+                        .age__block 
+                            .age #{daygame.Vozrast_Ogranich_Product}+ 
+                        .people__block
+                            img(src='/images/mainIcons/people.svg' alt=daygame.Name_Product).card__img__src
+                            .people #{daygame.Min_Igrok_Product}+ 
+                        .time__block 
+                            img(src='/images/mainIcons/time.svg' alt=daygame.Name_Product).card__img__src
+                            .time #{daygame.Vremya_Igri_Product}+
+                    a.daygame__btn Подробнее
+            .catalogue__container
+                .catalogue__products
+                    each i in products
+                        .card
+                            .card__img
+                                img(src='/images/'+i.Img_Product alt=i.Name_Product).card__img__src
+                            p.card__title #{i.Name_Product} 
+                            h2.card__price ₽ #{i.Price_Product} 
+                            .card__button
+                                a(href='/catalogue/:' + i.Category_ID + '?p=' + i.Podcategory_ID + '&i=' + i.ID_Product).button__content Купить 
+                                .button__icon  
+                                    svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor") 
+                                        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z") 
+                            .card__info 
+                                .age__block 
+                                    .age #{i.Vozrast_Ogranich_Product}+ 
+                                .people__block
+                                    img(src='/images/mainIcons/people.svg' alt=i.Name_Product).card__img__src
+                                    .people #{i.Min_Igrok_Product}+ 
+                                .time__block 
+                                    img(src='/images/mainIcons/time.svg' alt=i.Name_Product).card__img__src
+                                    .time #{i.Vremya_Igri_Product}+
+                .pagination
+                    - for(var x = 1; x < 7; x++)
+                        if x == page
+                            a(href='/catalogue?p='+x).pagination__tab.active__tab #{x}
+                        else
+                            a(href='/catalogue?p='+x).pagination__tab #{x}
 block scripts

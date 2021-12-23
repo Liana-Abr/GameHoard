@@ -1,4 +1,4 @@
-const catalogue = document.querySelector('a[href="/catalogue"]');
+const container = document.querySelector('.container');
 const popup = document.querySelector('.popup');
 const popup__tabs = document.querySelectorAll('.popup__tab');
 const popup__container = document.querySelector('.popup__container');
@@ -6,64 +6,48 @@ const popup__container = document.querySelector('.popup__container');
 const catalogue__tabs = [
     {
         tabs: [
-            { name: "Warhammer 40000", url: "/catalogue/:warhammer?p=w40k" },
-            { name: "Warhammer Age of Sigmar", url: "/catalogue/:warhammer?p=waof" },
-            { name: "Коробочные Игры", url: "/catalogue/:warhammer?p=bg" },
-            { name: "Краски Citadel Colour", url: "/catalogue/:warhammer?p=ccc" }
+            { name: "Warhammer 40000", url: "/catalogue/:warhammer?podcat=w40k" },
+            { name: "Warhammer Age of Sigmar", url: "/catalogue/:warhammer?podcat=waof" },
+            { name: "Коробочные Игры", url: "/catalogue/:warhammer?podcat=bg" },
+            { name: "Краски Citadel Colour", url: "/catalogue/:warhammer?podcat=ccc" }
         ]
     }, {
         tabs: [
-            { name: "MTG", url: "/catalogue/:ccg?p=mtg" },
-            { name: "Gwent", url: "/catalogue/:ccg?p=gwent" },
-            { name: "Берсерк. Герои", url: "/catalogue/:ccg?p=berserk" },
-            { name: "Star Wars: Destiny", url: "/catalogue/:ccg?p=swd" }
+            { name: "MTG", url: "/catalogue/:ccg?podcat=mtg" },
+            { name: "Gwent", url: "/catalogue/:ccg?podcat=gwent" },
+            { name: "Берсерк. Герои", url: "/catalogue/:ccg?podcat=berserk" },
+            { name: "Star Wars: Destiny", url: "/catalogue/:ccg?podcat=swd" }
         ]
     }, {
         tabs: [
-            { name: "Dungeons&Dragons", url: "/catalogue/:rpgames?p=dnd" },
-            { name: "Pathfinder", url: "/catalogue/:rpgames?p=pf" },
-            { name: "Кориолис", url: "/catalogue/:rpgames?p=kor" },
-            { name: "Game of Thrones", url: "/catalogue/:rpgames?p=got" }
+            { name: "Dungeons&Dragons", url: "/catalogue/:rpgames?podcat=dnd" },
+            { name: "Pathfinder", url: "/catalogue/:rpgames?podcat=pf" },
+            { name: "Кориолис", url: "/catalogue/:rpgames?podcat=kor" },
+            { name: "Game of Thrones", url: "/catalogue/:rpgames?podcat=got" }
         ]
     }, {
         tabs: [
-            { name: "Пазлы", url: "/catalogue/:puzzles?p=puzzles" },
-            { name: "Головоломки", url: "/catalogue/:puzzles?p=brainteaser" }
+            { name: "Пазлы", url: "/catalogue/:puzzles?podcat=puzzles" },
+            { name: "Головоломки", url: "/catalogue/:puzzles?podcat=brainteaser" }
         ]
     }, {
         tabs: [
-            { name: "Техника", url: "/catalogue/:models?p=tech" },
-            { name: "Авиация", url: "/catalogue/:models?p=aviation" },
-            { name: "Автомобили", url: "/catalogue/:models?p=cars" }
+            { name: "Техника", url: "/catalogue/:models?podcat=tech" },
+            { name: "Авиация", url: "/catalogue/:models?podcat=aviation" },
+            { name: "Автомобили", url: "/catalogue/:models?podcat=cars" }
         ]
     }
 ];
 
-catalogue.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    catalogue.classList.toggle('active');
-    if (catalogue.classList.contains('active')) {
-        popup.style = `
-        visibility: visible;
-        opacity: 1;
-        top: 50px;  
-        `;
-        // top: ${catalogue.offsetHeight}px;                   
-        // left: ${catalogue.offsetLeft}px;
-    } else if (!catalogue.classList.contains('active')) {
-        popup.style = `
-        visibility: hidden;
-        opacity: 0;
-        top: 30px; 
-        `;
-    }
-});
-
 for (let i = 0; i < popup__tabs.length; i++) {
-    popup__tabs[i].addEventListener('mouseover', (evt) => {
+    popup__tabs[i].addEventListener('mouseenter', (evt) => {
+        // popup__container.style.visibility = 'visible';
         popup__container.innerHTML = '';
         catalogue__tabs[i]['tabs'].forEach(el => {
             popup__container.innerHTML += `<a href="${el.url}">${el.name}</a>`;
         });
     });
+    // container.addEventListener('mouseout', (evt) => {
+    //     popup__container.style.visibility = 'hidden';
+    // });
 }

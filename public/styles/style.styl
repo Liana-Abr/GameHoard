@@ -24,30 +24,27 @@ body
     gap 30px
 
 .wrapper
-    width 50%
+    width 60%
 
 .popup
-    position absolute
     dflex(column, center, center)
-    top 30px
-    left 0
     width 100%
     background bg
     font-weight bolder
-    border-bottom 1px main2 solid
-    border-top 1px main2 solid
-    opacity 0
-    visibility hidden
     transition 0.2s all
     z-index 2
     .popup__content
-        width 50%
+        width 60%
         height 100%
-        dflex(row, center, flex-start)
+        dflex(column, center, flex-start)
         .popup__container
-            width 60%
-            dflex(column, center, space-around)
-            gap 15px
+            width 100%
+            height 30px
+            dflex(row, center, center)
+            border-right 1px solid main2
+            border-left 1px solid main2
+            border-bottom 1px solid main2
+            gap 25px
             a
                 text-decoration none
                 color main2
@@ -55,10 +52,11 @@ body
                     color main
         .popup__tabs
             height 100%
-            width 40%
-            dflex(column, flex-start, space-around)
+            width 100%
+            dflex(row, flex-start, space-around)
             border-right 1px solid main2
             border-left 1px solid main2
+            border-bottom 1px solid main2
             .popup__tab
                 width 100%
                 height 60px
@@ -89,7 +87,7 @@ body
     .header__content
         dflex(row, center, space-between)
         height 100%
-        width 50%
+        width 60%
         .logo
             width 95px
         .header__tabs
@@ -127,6 +125,7 @@ body
                 border-radius 0px
                 border 1px solid #C1C1C1
                 height 100%
+                padding 0 0 0 10px
 
 // ------------------------FOOTER------------------------- //
 footer
@@ -140,7 +139,7 @@ footer
     .footer__container
         dflex(row, flex-start, space-between)
         height 70%
-        width 50%
+        width 60%
         bottom 0
         font-size 15px
         .footer__about
@@ -170,6 +169,10 @@ footer
                     text-decoration underline
                     cursor pointer
 
+.container
+    dflex(column, center, space-around)
+    width 100%
+    height auto
 .news
     width 100%
     height 160px
@@ -209,7 +212,8 @@ footer
             input[type="submit"]
                 background main
                 color #ffffff
-            input[type="text"]
+                cursor pointer
+            input[type="email"]
                 padding-left 10px
 
 .product
@@ -226,49 +230,66 @@ footer
         dflex(row, flex-start, center)
         gap 40px
         flex-wrap wrap
-        .card
-            width 243px
-            height 387px
-            background #FFFFFF
-            box-shadow 0 0 18px 2px #00000025
-            dflex(column, center, space-around)
-            margin-right 10px
-            margin-left 10px
-            padding 10px
-            .card__img
-                width 65%
-                .card__img__src
-                    width 100%
-            .card__info
-                dflex(row, center, space-between)
-                width 60%
-                margin-top 5px
-            .card__button
-                width 60%
-                height 44px
-                dflex(row, center, space-between)
-                transition 0.5s all
-                .button__content
-                    height 100%
-                    width 70%
-                    background main
-                    transition 0.5s all
-                    dflex(row, center, center)
-                    color #ffffff
-                    cursor pointer
-                    text-decoration none
-                .button__icon
-                    dflex(row, center, center)
-                    height 100%
-                    width 30%
-                    background main2
-                    transition 0.5s all
-                    cursor pointer
+.card
+    width 203px
+    height 387px
+    background #FFFFFF
+    box-shadow 0 0 18px 2px #00000025
+    dflex(column, center, space-around)
+    padding 10px
+    .card__img
+        width 65%
+        .card__img__src
+            width 100%
+    .card__info
+        dflex(row, center, space-around)
+        width 100%
+        height 50px
+        margin-top 5px
+        .age__block
+            dflex(row, center, center)
+            width 30%
+            height 100%
+            gap 4px
+        .people__block
+            dflex(row, center, center)
+            width 40%
+            height 100%
+            gap 4px
+            img
+                height 40%
+        .time__block
+            dflex(row, center, center)
+            width 40%
+            height 100%
+            gap 4px
+            img
+                height 30%
+    .card__button
+        width 60%
+        height 44px
+        dflex(row, center, space-between)
+        transition 0.5s all
+        .button__content
+            height 100%
+            width 70%
+            background main
+            transition 0.5s all
+            dflex(row, center, center)
+            color #ffffff
+            cursor pointer
+            text-decoration none
+        .button__icon
+            dflex(row, center, center)
+            height 100%
+            width 30%
+            background main2
+            transition 0.5s all
+            cursor pointer
 
-                    svg
-                        width 22px
-                        color #ffffff
-
+            svg
+                width 22px
+                color #ffffff
 .product__page
     min-height 100%
     height 100%
@@ -306,5 +327,144 @@ footer
         z-index 5
         &:hover
             background main
-            color main2
+            color #fff
             
+.showmore__btn
+    margin-top 20px
+    height 40px
+    width 200px
+    background main2
+    dflex(row, center, center)
+    color #fff
+    text-decoration none
+
+.catalogue
+    dflex(row, flex-start, space-between)
+    min-height 100%
+    height 100%
+    width 100%
+    .catalogue__sideblocks
+        dflex(column, flex-start, center)
+        gap 20px
+        height 100%
+        width 20%
+        .sideblocks__daygame
+            color main2
+            width 100%
+            padding 20px
+            height auto
+            h2
+                margin 0
+                font-weight bold
+                color main
+
+            p
+                margin 0
+            dflex(column, center, center)
+            gap 10px
+            background #FFFFFF
+            box-shadow 0 0 18px 2px #00000025
+            .daygame__title
+                color main
+                font-weight bold
+            .daygame__img
+                width 80%
+            .daygame__btn
+                height 50px
+                width 100%
+                color #fff
+                background main2
+                dflex(column, center, center)
+                cursor pointer
+                text-decoration none
+            .card__info
+                dflex(row, center, space-around)
+                width 100%
+                height 50px
+                margin-top 5px
+                .age__block
+                    dflex(row, center, center)
+                    width 30%
+                    height 100%
+                    gap 4px
+                .people__block
+                    dflex(row, center, center)
+                    width 40%
+                    height 100%
+                    gap 4px
+                    img
+                        height 40%
+                .time__block
+                    dflex(row, center, center)
+                    width 40%
+                    height 100%
+                    gap 4px
+                    img
+                        height 30%
+        .sideblocks__filters
+            width 100%
+            padding 20px
+            height auto
+            dflex(column, flex-start, center)
+            gap 10px
+            background #FFFFFF
+            box-shadow 0 0 18px 2px #00000025
+            .filters__price
+                width 100%
+                dflex(column, center, center)
+                height auto
+                .price__text 
+                    width 100%
+                    dflex(row, center, space-between)
+                .price__range
+                    width 100%
+                    input
+                        width 100%
+            .filters__checkbox
+                width 100%
+                gap 5px
+                dflex(column, flex-start, center)
+                .checkbox
+                    width 100%
+                    dflex(row, center, space-between)
+            .filters__submit
+                width 100%
+                height 35px
+                input
+                    font-size 16px
+                    width 100%
+                    height 100%
+                    border none
+                    outline none
+                    border-radius none
+                    background main
+                    color #fff
+    .catalogue__container
+        width 70%
+        height 100%
+        dflex(column, center, flex-end)
+        gap 40px
+        .pagination
+            width 300px
+            height 30px
+            dflex(row, center, space-between)
+            .pagination__tab
+                height 30px
+                width 30px
+                border 1px solid main
+                dflex(row, center, center)
+                text-decoration none
+                color main2
+                &:hover
+                    color main
+            .active__tab
+                background main
+                color #fff
+                &:hover
+                    color #fff
+        .catalogue__products
+            dflex(row, flex-start, center)
+            gap 20px
+            width 100%
+            height 100%
+            flex-wrap wrap
