@@ -10,7 +10,8 @@ header.header
                 else 
                     a(href=i.url).tab.header__tab #{i.name}
         .header__search
-            input(type="search" placeholder="Поиск")
+            input(type="text" placeholder="Поиск" name="search").search-input
+            output(for="search").search-output
         .header__icons
             a(href="/basket").tab.header__tab
                 svg.icon(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")

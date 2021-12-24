@@ -4,18 +4,19 @@ block head
 block body
     .news
         .news__container 
-            h1 БЕСПЛАТНАЯ ДОСТАВКА ОТ 3000₽
+            h1 БЕСПЛАТНАЯ ДОСТАВКА ОТ 5000₽
             p Сделайте заказ и получите подарок!
     .wrapper
             .product__page   
                 .product__page__image 
-                    img(src='/images/'+product.Img_Product alt=product.Name_Product)
+                    img(src='/images/'+product.image_product alt=product.name_product)
                 .product__page__content
-                    h1 #{product.Name_Product}
-                    p #{product.Opisanie_Product}
+                    h1 #{product.name_product}
+                    p #{product.opisanie_product}
+                    p ЦЕНА: <b>#{product.price_product}₽</b>
                     .product__page__info 
-                        .product__page__age #{product.Vozrast_Ogranich_Product}+ 
-                        .product__page__people #{product.Min_Igrok_Product}+ 
-                        .product__page__time #{product.Vremya_Igri_Product}мин+
-                    a(href=product.ID_Product).product__page__button Добавить в корзину 
+                        .product__page__age <b>#{product.vozrast_ogranich_product}+</b>
+                        .product__page__people <b>#{product.min_igrok_product}+</b>
+                        .product__page__time <b>#{product.vremya_igry_product}мин+</b>
+                    a(href=product.id_product).product__page__button Добавить в корзину 
 block scripts

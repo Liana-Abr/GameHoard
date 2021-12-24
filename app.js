@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require("express");
 const mainRouter = require("./server/routes/mainRouter.js");
+const dbRouter = require("./server/routes/dbRouter.js");
 const port = process.env.PORT || 8080;
 const stylus = require("stylus");
 const autoprefixer = require('autoprefixer-stylus');
@@ -18,8 +20,9 @@ app.set("views", "./server/views");
 app.set("view engine", "pug");
 
 app.use(express.static("./public"));
+app.use(express.json());
 
 app.use("/", mainRouter);
-
+app.use("/api", dbRouter);
 
 app.listen(port, (e) => e ? "" : console.log(`Server running. http://localhost:${port}`));
