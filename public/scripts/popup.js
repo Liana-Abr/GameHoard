@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-const popup = document.querySelector('.popup');
+const popup = document.querySelector('.popup__content');
 const popup__tabs = document.querySelectorAll('.popup__tab');
 const popup__container = document.querySelector('.popup__container');
 
@@ -41,13 +41,16 @@ const catalogue__tabs = [
 
 for (let i = 0; i < popup__tabs.length; i++) {
     popup__tabs[i].addEventListener('mouseenter', (evt) => {
-        // popup__container.style.visibility = 'visible';
+        popup__container.style.visibility = 'visible';
         popup__container.innerHTML = '';
         catalogue__tabs[i]['tabs'].forEach(el => {
             popup__container.innerHTML += `<a href="${el.url}">${el.name}</a>`;
         });
     });
-    // container.addEventListener('mouseout', (evt) => {
-    //     popup__container.style.visibility = 'hidden';
-    // });
+    popup__container.addEventListener('mouseleave', (evt) => {
+        popup__container.style.visibility = 'hidden';
+    });
+    popup.addEventListener('mouseleave', (evt) => {
+        popup__container.style.visibility = 'hidden';
+    });
 }

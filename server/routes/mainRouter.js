@@ -1,7 +1,10 @@
+require('dotenv').config();
 const router = require("express").Router();
+const nodemailer = require("nodemailer");
 const productController = require('../controllers/productController.js');
 const checkMiddleware = require('../middleware/check.js');
 const db = require('../../db.js');
+
 const links = [
     { name: "Главная", url: "/" },
     { name: "Каталог", url: "/catalogue?p=1" },
@@ -14,45 +17,6 @@ const catalogue_tabs = [
     { name: "Ролевые игры", url: "/catalogue/rpgames" },
     { name: "Пазлы и гловоломки", url: "/catalogue/puzzles" },
     { name: "Сборные модели", url: "/catalogue/models" }
-];
-
-const products2 = [
-    {
-        ID_Product: "dnd123123", Name_Product: "22222",
-        Izdatel_ID: "microsoft", Date_Vypusk_Product: Date(22 - 12 - 2021),
-        Category_ID: "rpgames", Podcategory_ID: "dnd",
-        Min_Igrok_Product: 5, Vozrast_Ogranich_Product: 16,
-        Opisanie_Product: 'Настольная ролевая фентези игра',
-        Price_Product: 10000, Skidka_Product: null,
-        Vremya_Igri_Product: 120, Img_Product: 'mafia.jpg'
-    },
-    {
-        ID_Product: "123abc", Name_Product: "333333",
-        Izdatel_ID: "123abc", Date_Vypusk_Product: Date(22 - 12 - 2021),
-        Category_ID: "123abc", Podcategory_ID: "123abc",
-        Min_Igrok_Product: 4, Vozrast_Ogranich_Product: 16,
-        Opisanie_Product: 'Классическая Мафия для небольшой компании друзей',
-        Price_Product: 40000, Skidka_Product: null,
-        Vremya_Igri_Product: 30, Img_Product: 'mafia.jpg'
-    },
-    {
-        ID_Product: "123abc", Name_Product: "4444444",
-        Izdatel_ID: "123abc", Date_Vypusk_Product: Date(22 - 12 - 2021),
-        Category_ID: "dnd", Podcategory_ID: "123abc",
-        Min_Igrok_Product: 4, Vozrast_Ogranich_Product: 16,
-        Opisanie_Product: 'Классическая Мафия для небольшой компании друзей',
-        Price_Product: 40000, Skidka_Product: null,
-        Vremya_Igri_Product: 30, Img_Product: 'mafia.jpg'
-    },
-    {
-        ID_Product: "123abc", Name_Product: "4444444",
-        Izdatel_ID: "123abc", Date_Vypusk_Product: Date(22 - 12 - 2021),
-        Category_ID: "dnd", Podcategory_ID: "123abc",
-        Min_Igrok_Product: 4, Vozrast_Ogranich_Product: 16,
-        Opisanie_Product: 'Классическая Мафия для небольшой компании друзей',
-        Price_Product: 40000, Skidka_Product: null,
-        Vremya_Igri_Product: 30, Img_Product: 'mafia.jpg'
-    }
 ];
 
 const daygame = {
@@ -75,6 +39,44 @@ router.get("/", async (req, res) => {
         newproduct: products.rows,
         class: "dark"
     });
+});
+
+router.get("/send_email", async (req, res) => {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.SENDEMAIL,
+            pass: process.env.SENDPASS
+        }
+    });
+    const mailOptions = {
+        from: process.env.SENDEMAIL,
+        to: req.query.email,
+        subject: 'HELLO EMAIL WORLD',
+        text: 'Hello to myself!',
+        html: `<!doctype html>
+        <html ⚡4email>
+
+            <head>
+            <meta charset="utf-8">
+            <style amp4email-boilerplate>body{visibility:hidden}</style>
+            <script async src="https://cdn.ampproject.org/v0.js"></script>
+            <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+            </head>
+
+            <body style="width: 100%;display: flex; align-items: center; justify-content: center; background: #fff;">
+
+            <p><b>Yo dude</b>, what's up?</p>
+            <p>Сообщение отправленное через Node.js с использованием библиотеки nodemailer</p>
+            <p>А вот танцующий котиг:<br/>
+            <img src="https://acegif.com/wp-content/gifs/dancing-cat-41.gif" width="500" height="450"/>
+
+            </body>
+        </html>`
+    };
+
+    transporter.sendMail(mailOptions);
+    res.redirect('/');
 });
 
 router.get("/catalogue", checkMiddleware, async (req, res) => {

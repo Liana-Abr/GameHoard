@@ -662,14 +662,13 @@ footer .footer__container .footer__links li:hover {
   width: 100%;
 }
 .catalogue .catalogue__sideblocks .sideblocks__filters .filters__checkbox {
-  width: 100%;
   gap: 5px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
-.catalogue .catalogue__sideblocks .sideblocks__filters .filters__checkbox .checkbox {
+.catalogue .catalogue__sideblocks .sideblocks__filters .checkbox {
   width: 100%;
   display: flex;
   flex-direction: row;

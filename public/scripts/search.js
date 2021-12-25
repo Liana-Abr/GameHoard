@@ -1,14 +1,13 @@
 const search = document.querySelector('.search-input');
 const output1 = document.querySelector('.search-output');
 search.addEventListener('input', async (evt) => {
-    let res = await fetch('/api/getproduct', {
+    let res = await fetch('/api/product/getproduct', {
         method: 'GET',
         headers: {
             value: search.value
         }
     });
     let commits = await res.json();
-    console.log(commits);
     while (output1.firstChild) {
         output1.firstChild.remove();
         output1.style.display = 'none';
@@ -23,7 +22,7 @@ search.addEventListener('input', async (evt) => {
     if (search.value == '') {
         while (output1.firstChild) {
             output1.firstChild.remove();
-            output1.style.display = 'none';
         }
+        output1.style.display = 'none';
     }
 });

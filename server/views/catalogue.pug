@@ -4,10 +4,10 @@ block head
 block body
     .container
         .email__connect
-            form(method="POST" action="/send_email").email__container
+            form(method="GET" action="/send_email").email__container
                 h2 ПОЛУЧАЙТЕ СКИДКИ И ПОДАРКИ
                 .inp__container 
-                    input(type="text" placeholder="Ваше e-mail" required)
+                    input(type="email" placeholder="Ваше e-mail" name="email" required)
                     input(type="submit", value="ПОДПИСАТЬСЯ")
         .popup
             .popup__content
@@ -22,25 +22,48 @@ block body
                 form.sideblocks__filters(method="GET" action="/catalogue")
                     .filters__price
                         .price__text 
-                            div Цена
-                            output( for="price").price-output от 0 ₽
+                            div 
+                                b Цена
+                            b
+                                output( for="price").price-output от 0 ₽
                         .price__range
                             input(type="range" min="0" max="30000" step="100" value="0" name="max_price_product")
                     .filters__time
-                        div Длительность
-                        input(type="radio" name="vremya_igry_product" value="20")
-                        input(type="radio" name="vremya_igry_product" value="60")
-                        input(type="radio" name="vremya_igry_product" value="120")
+                        div 
+                            b Длительность
+                        .checkbox
+                            label(for="vremya_igry_product") До 20 мин
+                            input(type="radio" name="vremya_igry_product" value="20")
+                        .checkbox
+                            label(for="vremya_igry_product") До 60 мин
+                            input(type="radio" name="vremya_igry_product" value="60")
+                        .checkbox
+                            label(for="vremya_igry_product") До 120 мин 
+                            input(type="radio" name="vremya_igry_product" value="120")
                     .filters__age
-                        div Возраст
-                        input(type="radio" name="vozrast_ogranich_product" value="6")
-                        input(type="radio" name="vozrast_ogranich_product" value="14")
-                        input(type="radio" name="vozrast_ogranich_product" value="18")
+                        div 
+                            b Возраст
+                        .checkbox
+                            label(for="vremya_igry_product") 6+
+                            input(type="radio" name="vozrast_ogranich_product" value="6")
+                        .checkbox
+                            label(for="vremya_igry_product") 14+ 
+                            input(type="radio" name="vozrast_ogranich_product" value="14")
+                        .checkbox
+                            label(for="vremya_igry_product") 18+ 
+                            input(type="radio" name="vozrast_ogranich_product" value="18")
                     .filters__people
-                        div Кол-во игроков
-                        input(type="radio" name="min_igrok_product" value="1")
-                        input(type="radio" name="min_igrok_product" value="4")
-                        input(type="radio" name="min_igrok_product" value="8")
+                        div 
+                            b Кол-во игроков
+                        .checkbox
+                            label(for="vremya_igry_product") от 1
+                            input(type="radio" name="min_igrok_product" value="1")
+                        .checkbox
+                            label(for="vremya_igry_product") от 4 
+                            input(type="radio" name="min_igrok_product" value="4")
+                        .checkbox
+                            label(for="vremya_igry_product") от 8
+                            input(type="radio" name="min_igrok_product" value="8")
                     .filters__checkbox
                         .checkbox
                             label(for="new") Новинка
