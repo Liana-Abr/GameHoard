@@ -7,13 +7,15 @@ html(lang="zxx")
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width")
     body
+
         //- ВАЖНЫЙ СКРИПТ
         script(src="#") 
         //- Не удаляем пока не сделаем загрузку. (Пустой скрипт с ссылкой убирает анимации)
         include partials/header.pug
+        include partials/basket.pug
         block body
+        script(src="/scripts/script.js")
         include partials/footer.pug
         block scripts
-        script(src="/scripts/script.js")
         script(src="/scripts/popup.js")
         script(src="/scripts/search.js")

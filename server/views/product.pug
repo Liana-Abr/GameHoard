@@ -1,6 +1,7 @@
 extends layout
 block head 
     link(rel="stylesheet", href="/style.css")
+
 block body
     .news
         .news__container 
@@ -18,5 +19,5 @@ block body
                         .product__page__age <b>#{product.vozrast_ogranich_product}+</b>
                         .product__page__people <b>#{product.min_igrok_product}+</b>
                         .product__page__time <b>#{product.vremya_igry_product}мин+</b>
-                    a(href=product.id_product).product__page__button Добавить в корзину 
+                    a(onclick=`addProductToCart(${product.id_product})`).product__page__button Добавить в корзину 
 block scripts
