@@ -47,13 +47,15 @@ function counterYes() {
     } else if (count >= 5 && count < 21) {
         itemm.innerHTML = `${count} товаров`;
     }
-    let counter = 0
+    let counter = 0;
     amount.innerHTML = counter;
     document.querySelectorAll('.amount__price').forEach(el => {
         counter += +el.innerHTML;
     });
     amount.innerHTML = `${counter}₽`;
 }
+
+// document.querySelectorAll('')
 
 btn.addEventListener('click', (evt) => {
     basket.classList.add('basket__active');

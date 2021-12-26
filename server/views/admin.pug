@@ -1,0 +1,56 @@
+if admin
+    div.auth
+        h1 Админка
+        form(action="/api/product/createProduct", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+            label Название:
+            input( required type="text" name="name_product" size="50")
+            label Издатель:
+            select(required name="izdatel_id")
+                option(value="1") Games Workshop
+                option(value="2") Wizards of the Coast
+            label Дата выпуска (год):
+            input( required type="text" name="date_vypusk_product" size="50")
+            label Категория:
+            select(required name="category_id")
+                option(value="1") Warhammer
+                option(value="2") ККИ
+                option(value="3") Ролевые игры
+                option(value="4") Пазлы
+                option(value="5") Модели
+            label Подкатегория:
+            select(required name="podcategory_id")
+                option(value="1") Warhammer 40.000
+                option(value="2") MTG
+                option(value="3") BG
+                option(value="4") Gwent
+            label Кол-во игроков:
+            select(required name="min_igrok_product")
+                option(value="1") 1+
+                option(value="2") 2+
+                option(value="4") 4+
+            label Возраст:
+            select(required name="vozrast_ogranich_product")
+                option(value="10") 10+
+                option(value="14") 14+
+                option(value="16") 16+
+            label Описание:
+                textarea(name="opisanie_product", cols="30", rows="10") 
+            label Цена:
+            input(required type='number' name="price_product")
+            label Время игры:
+            select(required name="vremya_igry_product")
+                option(value="20") 20+
+                option(value="60") 60+
+                option(value="120") 120+
+            label Изображение:
+            input(type="file" name="image_product")
+            input(type="submit" value="Добавить продукт")
+else
+    div.auth
+        form(action="/login" method="GET" class="login")
+            h1 Авторизация
+            label email:
+            input(type="email" name="email" class="login__email")
+            label password:
+            input(type="password" name="password" class="login__password")
+            input(type="submit" value="Отправить")
