@@ -46,6 +46,8 @@ function counterYes() {
         itemm.innerHTML = `${count} товара`;
     } else if (count >= 5 && count < 21) {
         itemm.innerHTML = `${count} товаров`;
+    } else {
+        itemm.innerHTML = `0 товаров`;
     }
     let counter = 0;
     amount.innerHTML = counter;
@@ -128,3 +130,11 @@ function addProductToCart(id) {
     document.cookie = `${id}; SameSite=Lax; Secure; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
     return alert('Товар успешно добавлен в корзину');
 }
+const buttonClean = document.querySelector('button.clean');
+buttonClean.addEventListener('click', (evt) => {
+    document.cookie = '';
+    while (card__main__container.firstChild) {
+        card__main__container.firstChild.remove();
+    }
+    counterYes();
+});

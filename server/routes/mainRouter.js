@@ -65,13 +65,15 @@ router.get("/send_email", async (req, res) => {
             </head>
 
             <body style="width: 100%;display: flex; align-items: center; justify-content: center; background: #fff;">
-
             <p><b>Yo dude</b>, what's up?</p>
             <p>Сообщение отправленное через Node.js с использованием библиотеки nodemailer</p>
+
+            <p>Это письмо было отправлено автоматически. Пожалуйста, не отвечайте на него.
+
             <p>А вот танцующий котиг:<br/>
             <img src="https://acegif.com/wp-content/gifs/dancing-cat-41.gif" width="500" height="450"/>
-
             </body>
+
         </html>`
     };
 

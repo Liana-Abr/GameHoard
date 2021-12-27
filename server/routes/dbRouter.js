@@ -1,6 +1,6 @@
-const router = require("express").Router()
+const router = require("express").Router();
 
-const productRouter = require("./dbroutes/productRouter.js")
+const productRouter = require("./dbroutes/productRouter.js");
 // const categoryRouter = require("./dbroutes/categoryRouter.js")
 // const izdatelRouter = require("./dbroutes/izdatelRouter.js")
 // const sposob_oplatyRouter = require("./dbroutes/sposob_oplatyRouter.js")
@@ -13,7 +13,7 @@ const productRouter = require("./dbroutes/productRouter.js")
 // const rassylkaRouter = require("./dbroutes/rassylkaRouter.js")
 // const profileRouter = require("./dbroutes/profileRouter.js")
 
-router.use("/product", productRouter)
+router.use("/product", productRouter);
 // router.use("/category", categoryRouter)
 // router.use("/izdatel", izdatelRouter)
 // router.use("/sposob_oplaty", sposob_oplatyRouter)
@@ -26,4 +26,4 @@ router.use("/product", productRouter)
 // router.use("/rassylka", rassylkaRouter)
 // router.use("/profile", profileRouter)
 
-module.exports = router
+module.exports = router;

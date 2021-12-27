@@ -622,12 +622,7 @@ footer
                 cursor pointer
 
 button
-    color white
-    background-color: #FF6A00
-    font-family 'Roboto', sans-serif;
-    font-weight bold
-    margin 35px
-    padding 10px
+
 
 
 .inp__forms
@@ -669,22 +664,43 @@ hr
     font-weight 900
     color #202020
 
-button
+.inp__forms
+    button.clean
+        margin-bottom 30px
+        padding 10px
+        font-family 'Roboto', sans-serif;
+        font-weight bold
+        color white
+        background-color: main
+        height 35px
+        border none
+        outline none
+        width 100%
+        cursor pointer
+        font-weight 600
+        font-size 16px
+        &:hover
+            color: #fff
+            background main2
+
+
+.inp__forms button[type="submit"]
+    color white
+    background-color: main
+    font-family 'Roboto', sans-serif;
+    font-weight bold
+    padding 10px
+    width 100%
     margin-top 5px
-    width 70%
+    margin-bottom 10px
     height 35px
     border none
-    
-    border-radius 20px
     cursor pointer
     font-size 16px
-    font-family 'Roboto', sans-serif;
     font-weight 600
-    color white
-
-button&:hover
-    color: #fff
-    background main2
+    &:hover
+        color: #fff
+        background main2
 
 // ------------------------vse------------------------- //
 

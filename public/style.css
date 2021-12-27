@@ -896,14 +896,7 @@ footer .footer__container .footer__links li:hover {
   color: #e44c4c;
   cursor: pointer;
 }
-button {
-  color: #fff;
-  background-color: #ff6a00;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-  margin: 35px;
-  padding: 10px;
-}
+button,
 .inp__forms {
   display: flex;
   flex-direction: column;
@@ -943,19 +936,41 @@ hr {
   font-weight: 900;
   color: #202020;
 }
-button {
-  margin-top: 5px;
-  width: 70%;
+.inp__forms button.clean {
+  margin-bottom: 30px;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #fff;
+  background-color: #ea581d;
   height: 35px;
   border: none;
-  border-radius: 20px;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+}
+.inp__forms button.clean:hover {
+  color: #fff;
+  background: #212121;
+}
+.inp__forms button[type="submit"] {
+  color: #fff;
+  background-color: #ea581d;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  height: 35px;
+  border: none;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
   font-weight: 600;
-  color: #fff;
 }
-button:hover {
+.inp__forms button[type="submit"]:hover {
   color: #fff;
   background: #212121;
 }
