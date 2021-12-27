@@ -1,6 +1,6 @@
 const router = require("express").Router()
 
-const zakaz_productController = require('../../../../project/server/controllers/zakaz_productController.js')
+const zakaz_productController = require('../../controllers/zakaz_productController.js')
 
 router.post('/', zakaz_productController.createZakaz_Product)
 router.get('/', zakaz_productController.getAllZakaz_Product)
