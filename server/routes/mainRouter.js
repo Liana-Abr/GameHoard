@@ -149,39 +149,4 @@ router.get('/login', async (req, res) => {
     }
 });
 
-router.get("/admin", async (req, res) => {
-    try {
-        if (!req.files) {
-            res.send({
-                status: false,
-                message: 'No file uploaded'
-            });
-        } else {
-            console.log(req.body);
-            const img = req.files.img;
-            const imgname = img.name;
-            const tovar = new Product({
-                title: req.body.title,
-                autor: req.body.autor,
-                date: req.body.date,
-                price: req.body.price,
-                status: req.body.status,
-                status__class: req.body.status__class,
-                genres: req.body.genres,
-                img: imgname
-            });
-            await tovar.save();
-            img.mv('public/images/' + imgname, (err) => {
-                if (err) {
-                    res.send(err);
-                } else {
-                    res.redirect('/');
-                }
-            });
-        }
-    } catch (err) {
-        res.status(500).send(err);
-    }
-});
-
 module.exports = router;
