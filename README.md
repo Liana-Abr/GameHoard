@@ -6,9 +6,8 @@
 3.  Почтовая рассылка, живая поисковая строка, слайдер и звуковые эффекты
 
 ## Использованные технологии:
-1.  JS, Pug, Stylus
-2.  Node.js, Express.js
-3.  PostgresQL, Nodemailer
+1.  JS, Pug, Stylus - для Front-end части проекта.
+2.  Node.js, Express.js, PostgresQL, Nodemailer - для Back-end части проекта.
 
 
 ## Сложные задачи:
