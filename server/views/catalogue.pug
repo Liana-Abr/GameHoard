@@ -14,7 +14,7 @@ block body
                 .popup__tabs
                     each i in catalogue_tabs
                         a(href=i.url).popup__tab #{i.name}
-                .popup__container 
+                .popup__container(style="visibility: hidden;")
                     p Пока ничего нету
     .wrapper
         .catalogue
@@ -41,17 +41,17 @@ block body
                             label(for="vremya_igry_product") От 120 мин 
                             input(type="radio" name="vremya_igry_product" value="120")
                     .filters__age
-                        div 
+                        div
                             b Возраст
                         .checkbox
-                            label(for="vremya_igry_product") 6+
-                            input(type="radio" name="vozrast_ogranich_product" value="6")
+                            label(for="vremya_igry_product") 10+
+                            input(type="radio" name="vozrast_ogranich_product" value="10")
                         .checkbox
                             label(for="vremya_igry_product") 14+ 
                             input(type="radio" name="vozrast_ogranich_product" value="14")
                         .checkbox
-                            label(for="vremya_igry_product") 18+ 
-                            input(type="radio" name="vozrast_ogranich_product" value="18")
+                            label(for="vremya_igry_product") 16+ 
+                            input(type="radio" name="vozrast_ogranich_product" value="16")
                     .filters__people
                         div 
                             b Кол-во игроков
@@ -59,21 +59,18 @@ block body
                             label(for="vremya_igry_product") от 1
                             input(type="radio" name="min_igrok_product" value="1")
                         .checkbox
-                            label(for="vremya_igry_product") от 4 
-                            input(type="radio" name="min_igrok_product" value="4")
+                            label(for="vremya_igry_product") от 2 
+                            input(type="radio" name="min_igrok_product" value="2")
                         .checkbox
-                            label(for="vremya_igry_product") от 8
-                            input(type="radio" name="min_igrok_product" value="8")
+                            label(for="vremya_igry_product") от 4
+                            input(type="radio" name="min_igrok_product" value="4")
                     .filters__checkbox
                         .checkbox
                             label(for="new") Новинка
-                            input(type="checkbox", name="new")
+                            input(type="checkbox", name="newTovar")
                         .checkbox
                             label(for="sale") Со скидкой
                             input(type="checkbox", name="sale")
-                        .checkbox
-                            label(for="vnalichii") В наличии
-                            input(type="checkbox", name="vnalichii")
                     .filters__submit
                         input(type="submit", name="submit" value="Поиск")
                 .sideblocks__daygame
@@ -104,7 +101,7 @@ block body
                             h2.card__price ₽ #{i.price_product} 
                             .card__button
                                 a(href='/catalogue/product/' + i.id_product).button__content Купить 
-                                .button__icon  
+                                .button__icon(onclick=`addProductToCart(${i.id_product})`)
                                     svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor") 
                                         path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z") 
                             .card__info 

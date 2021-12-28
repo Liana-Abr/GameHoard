@@ -1,7 +1,7 @@
 if admin
     div.auth
         h1 Админка
-        form(action="/api/product/createProduct", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        form(action="/api/product/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
             label Название:
             input( required type="text" name="name_product" size="50")
             label Издатель:
@@ -20,13 +20,11 @@ if admin
                     option(data-category= i.category_id value= i.id_podcategory) #{i.name_podcategory}
             label Кол-во игроков:
             select(required name="min_igrok_product")
-                option(value=null) -
                 option(value="1") 1+
                 option(value="2") 2+
                 option(value="4") 4+
             label Возраст:
             select(required name="vozrast_ogranich_product")
-                option(value=null) -
                 option(value="10") 10+
                 option(value="14") 14+
                 option(value="16") 16+
@@ -36,7 +34,6 @@ if admin
             input(required type='number' name="price_product")
             label Время игры:
             select(required name="vremya_igry_product")
-                option(value=null) -
                 option(value="20") 20+
                 option(value="60") 60+
                 option(value="120") 120+
