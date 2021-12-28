@@ -16,6 +16,7 @@ block body
                         a(href=i.url).popup__tab #{i.name}
                 .popup__container(style="visibility: hidden;")
                     p Пока ничего нету
+    img.dragon(src="/images/secret.gif")
     .wrapper
         .catalogue
             .catalogue__sideblocks
@@ -117,7 +118,7 @@ block body
                                         img(src='/images/mainIcons/time.svg' alt=i.Name_Product).card__img__src
                                         .time #{i.vremya_igry_product}+
                 .pagination
-                    - for(var x = 1; x < 7; x++)
+                    - for(var x = 1; x <= 7; x++)
                         if x == page
                             a(href='/catalogue?p='+x).pagination__tab.active__tab #{x}
                         else

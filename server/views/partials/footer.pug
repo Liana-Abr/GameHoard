@@ -7,17 +7,23 @@ footer
         .footer__links
             ul.links__main
                 li.links__header Основные ссылки
-                li Главная
-                li Каталог
-                li О нас
+                li
+                    a(href="/")  Главная
+                li
+                    a(href="/catalogue") Каталог
             ul.links__catalogue
-                li.links__header Категории
-                li Ролевые игры
-                li ККИ
-                li Warhammer
-                li Пазлы и головоломки
-                li Книги и комиксы
-                li Сборные модели
+                li.links__header
+                    a(href="/catalogue") Категории
+                li
+                    a(href="/catalogue/rpgames") Ролевые игры
+                li
+                    a(href="/catalogue/ccg") ККИ
+                li
+                    a(href="/catalogue/warhammer") Warhammer
+                li
+                    a(href="/catalogue/puzzles") Пазлы и головоломки
+                li
+                    a(href="/catalogue/models") Сборные модели
             ul.links__contact
                 li.links__header Соц. сети
                 li VK.com

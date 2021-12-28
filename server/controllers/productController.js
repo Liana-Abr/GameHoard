@@ -74,7 +74,7 @@ class ProductController {
     }
     async getOneProduct(req, res) {
         const val = req.headers.value;
-        const product = await db.query(`select * from product where name_product like '${val}%'`);
+        const product = await db.query(`select * from product where lower(name_product) like lower('${val}%')`);
         res.json(product.rows);
     }
     async updateProduct(req, res) {

@@ -66,8 +66,6 @@ function CreateCardInCart(commit, id, i) {
 
 btn.addEventListener('click', (evt) => {
     basket.classList.add('basket__active');
-    var snd = new Audio("../sounds/file.wav"); // buffers automatically when created
-    snd.play();
     while (card__main__container.firstChild) {
         card__main__container.firstChild.remove();
     }
