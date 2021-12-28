@@ -99,13 +99,15 @@ function CreateCardInCart(commit, id, i) {
 
 btn.addEventListener('click', (evt) => {
     basket.classList.add('basket__active');
+    var snd = new Audio("../sounds/file.wav"); // buffers automatically when created
+    snd.play();
     while (card__main__container.firstChild) {
         card__main__container.firstChild.remove();
     }
     counterYes();
     if (document.cookie) {
         let arr = document.cookie.split('; ');
-        let i = 0
+        let i = 0;
         arr.forEach(async (id) => {
             id = id.split('=');
             fetch('/api/product/' + id[0]).then((res) => {

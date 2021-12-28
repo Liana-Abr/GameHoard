@@ -11,7 +11,7 @@ class ProductController {
                     message: 'No file uploaded'
                 });
             } else {
-                const { name_product, izdatel_id, date_vypusk_product, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product} = req.body;
+                const { name_product, izdatel_id, date_vypusk_product, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product } = req.body;
                 const img = req.files.image_product;
                 const imgname = img.name;
                 const newProduct = await db.query('call product_insert($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', [name_product, izdatel_id, date_vypusk_product, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product, imgname]);
@@ -52,7 +52,7 @@ class ProductController {
         if (min_price_product) {
             arr.push(`price_product > ${min_price_product}`);
         }
-        if (max_price_product) {
+        if (max_price_product > 0) {
             arr.push(`price_product < ${max_price_product}`);
         }
         if (min_vremya_igry_product) {
