@@ -6,30 +6,27 @@ if admin
             input( required type="text" name="name_product" size="50")
             label Издатель:
             select(required name="izdatel_id")
-                option(value="1") Games Workshop
-                option(value="2") Wizards of the Coast
+                each i in izdatel
+                    option(value= i.id_izdatel) #{i.name_izdatel}
             label Дата выпуска (год):
-            input( required type="text" name="date_vypusk_product" size="50")
+            input( required type="number" name="date_vypusk_product" max="9999" size="4")
             label Категория:
             select(required name="category_id")
-                option(value="1") Warhammer
-                option(value="2") ККИ
-                option(value="3") Ролевые игры
-                option(value="4") Пазлы
-                option(value="5") Модели
+                each i in category
+                    option(value= i.id_category) #{i.name_category}
             label Подкатегория:
             select(required name="podcategory_id")
-                option(value="1") Warhammer 40.000
-                option(value="2") MTG
-                option(value="3") BG
-                option(value="4") Gwent
+                each i in podcategory
+                    option(data-category= i.category_id value= i.id_podcategory) #{i.name_podcategory}
             label Кол-во игроков:
             select(required name="min_igrok_product")
+                option(value=null) -
                 option(value="1") 1+
                 option(value="2") 2+
                 option(value="4") 4+
             label Возраст:
             select(required name="vozrast_ogranich_product")
+                option(value=null) -
                 option(value="10") 10+
                 option(value="14") 14+
                 option(value="16") 16+
@@ -39,12 +36,14 @@ if admin
             input(required type='number' name="price_product")
             label Время игры:
             select(required name="vremya_igry_product")
+                option(value=null) -
                 option(value="20") 20+
                 option(value="60") 60+
                 option(value="120") 120+
             label Изображение:
-            input(type="file" name="image_product")
+            input(type="file" name="image_product" accept="image/*")
             input(type="submit" value="Добавить продукт")
+    script(src='./scripts/admin.js')
 else
     div.auth
         form(action="/login" method="GET" class="login")

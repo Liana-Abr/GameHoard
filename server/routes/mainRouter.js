@@ -137,11 +137,17 @@ router.get("/contacts", (req, res) => {
 });
 
 router.get('/login', async (req, res) => {
+    const category = await db.query(`select * from category`);
+    const podcategory = await db.query(`select * from podcategory`);
+    const izdatel = await db.query(`select * from izdatel`);
     console.log(req.query);
     if (req.query.email == process.env.EMAIL && req.query.password == process.env.PASSWORD) {
         console.log('1');
         res.render('admin', {
-            admin: true
+            admin: true,
+            category: category.rows,
+            podcategory: podcategory.rows,
+            izdatel: izdatel.rows
         });
     } else {
         console.log('2')
