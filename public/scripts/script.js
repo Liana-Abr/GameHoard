@@ -2,35 +2,6 @@ const price = document.querySelector('input[name="max_price_product"]');
 const submit = document.querySelector('.filters__submit input[name="submit"]');
 const output = document.querySelector('.price-output');
 
-// const catalogue__products = document.querySelector('.catalogue__products');
-// const radios__time = document.querySelectorAll('.filters__time input[type="radio"]');
-// const radios__people = document.querySelectorAll('.filters__people input[type="radio"]');
-// const radios__age = document.querySelectorAll('.filters__age input[type="radio"]');
-// radios__time.forEach(el1 => {
-//     el1.addEventListener('click', (evt) => {
-//         radios__time.forEach(el2 => {
-//             el2.classList.remove('active__inp1');
-//         });
-//         el1.classList.add('active__inp1');
-//     });
-// });
-// radios__people.forEach(el1 => {
-//     el1.addEventListener('click', (evt) => {
-//         radios__people.forEach(el2 => {
-//             el2.classList.remove('active__inp2');
-//         });
-//         el1.classList.add('active__inp2');
-//     });
-// });
-// radios__age.forEach(el1 => {
-//     el1.addEventListener('click', (evt) => {
-//         radios__age.forEach(el2 => {
-//             el2.classList.remove('active__inp3');
-//         });
-//         el1.classList.add('active__inp3');
-//     });
-// });
-
 const btn = document.querySelector('.header__btn');
 const card__main__container = document.querySelector('.card__main__Container');
 const basket = document.querySelector('.basket__container');
@@ -40,7 +11,7 @@ const itemm = document.querySelector('.itemm');
 
 function counterYes(id) {
     let count = document.querySelectorAll('.count');
-    let sum = 0
+    let sum = 0;
     count.forEach(el => {
         sum += +el.innerHTML;
     });
@@ -64,14 +35,10 @@ function counterYes(id) {
     amount.innerHTML = `${counter}₽`;
 }
 
-// document.querySelectorAll('')
 function CreateCardInCart(commit, id, i) {
     let div = document.createElement('div');
     div.classList.add('Cart-Itemm');
-    console.log(commit.price_product);
-    console.log(getCookieValue(id[0])[2 + i]);
-
-    let xy = +commit.price_product * +getCookieValue(id[0])[2 + i]
+    let xy = +commit.price_product * +getCookieValue(id[0])[2 + i];
     console.log(xy);
     div.innerHTML = `
     <div class="first__container">
@@ -117,7 +84,6 @@ btn.addEventListener('click', (evt) => {
                 i += 1;
                 counterYes(id);
             });
-
         });
     }
     const buttonClean = document.querySelector('.clean');
@@ -158,13 +124,11 @@ function removeProductFromCart(id) {
 }
 
 function addProductToCart(id) {
-    console.log(1);
 
     if (getCookieValue(id)) {
         let arr = getCookieValue(id).split('=');
         arr[1] = +arr[1] + 1;
         document.cookie = `${arr[0]}=${arr[1]}; SameSite=Lax; Secure; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-        console.log(getCookieValue(id))
         return alert('Товар успешно добавлен в корзину');
     }
 
@@ -174,7 +138,6 @@ function addProductToCart(id) {
         return alert('Товар успешно добавлен в корзину');
     }
 
-    console.log(2);
     document.cookie = `${id}=1; SameSite=Lax; Secure; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
     return alert('Товар успешно добавлен в корзину');
 }

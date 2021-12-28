@@ -368,6 +368,11 @@ footer .footer__container .footer__links li:hover {
   padding: 10px;
   transition: 0.5s all;
 }
+.card:hover .card__info {
+  visibility: visible;
+  height: 40px;
+  opacity: 1;
+}
 .card .card__img {
   width: 65%;
   height: 150px;
@@ -382,8 +387,11 @@ footer .footer__container .footer__links li:hover {
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 50px;
+  height: 10px;
   margin-top: 5px;
+  visibility: hidden;
+  transition: 0.5s all;
+  opacity: 0;
 }
 .card .card__info .age__block {
   display: flex;
@@ -404,7 +412,7 @@ footer .footer__container .footer__links li:hover {
   gap: 4px;
 }
 .card .card__info .people__block img {
-  height: 40%;
+  height: 30px;
 }
 .card .card__info .time__block {
   display: flex;
@@ -416,7 +424,7 @@ footer .footer__container .footer__links li:hover {
   gap: 4px;
 }
 .card .card__info .time__block img {
-  height: 30%;
+  height: 20px;
 }
 .card .card__button {
   width: 60%;
