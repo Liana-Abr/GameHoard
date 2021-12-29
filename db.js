@@ -12,7 +12,8 @@ const devConfig = {
 // ${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 
 const proConfig = {
-    connectionString: process.env.HEROKU_POSTGRESQL_DBNAME_URL
+    connectionString: process.env.HEROKU_POSTGRESQL_DBNAME_URL,
+    ssl: true
 };
 
 const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
