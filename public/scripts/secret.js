@@ -53,8 +53,8 @@ function activateCheats() {
     `;
     }
     setTimeout(sound, 2000);
-    setTimeout(clearSecret, 5000);
+    setTimeout(clearSecret, 6000);
 
 
-    alert("cheats activated");
+    alert("Вы разбудили деда");
 }
