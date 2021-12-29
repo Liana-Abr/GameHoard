@@ -1,5 +1,4 @@
-// a key map of allowed keys
-var allowedKeys = {
+let allowedKeys = {
     37: 'left',
     38: 'up',
     39: 'right',
@@ -8,26 +7,14 @@ var allowedKeys = {
     66: 'b'
 };
 
-// the 'official' Konami Code sequence
-var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+let konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+let konamiCodePosition = 0;
 
-// a variable to remember the 'position' the user has reached so far.
-var konamiCodePosition = 0;
-
-// add keydown event listener
 document.addEventListener('keydown', function (e) {
-    // get the value of the key code from the key map
-    var key = allowedKeys[e.keyCode];
-    // get the value of the required key from the konami code
-    var requiredKey = konamiCode[konamiCodePosition];
-
-    // compare the key with the required key
+    let key = allowedKeys[e.keyCode];
+    let requiredKey = konamiCode[konamiCodePosition];
     if (key == requiredKey) {
-
-        // move to the next key in the konami code sequence
         konamiCodePosition++;
-
-        // if the last key is reached, activate cheats
         if (konamiCodePosition == konamiCode.length) {
             activateCheats();
             konamiCodePosition = 0;
@@ -43,16 +30,16 @@ function activateCheats() {
         left: 100%
     `;
     function sound() {
-        var audio = new Audio('../sounds/secret.wav');
+        let audio = new Audio('../sounds/secret.wav');
         audio.play();
     }
     function clearSecret() {
         document.querySelector('.dragon').style = `
         transition: none;
-        left: -100%
+        left: -3000px
     `;
     }
-    setTimeout(sound, 2000);
+    setTimeout(sound, 2500);
     setTimeout(clearSecret, 6000);
 
 

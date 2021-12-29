@@ -1,4 +1,4 @@
-var slideIndex = 1;
+let slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
@@ -7,15 +7,15 @@ function plusSlides(n) {
 
 function currentSlide(n) {
     showSlides(slideIndex = n);
-    var snd = new Audio("../sounds/file.wav"); // buffers automatically when created
+    let snd = new Audio("../sounds/file.wav"); // buffers automatically when created
     snd.play();
     return;
 }
 
 function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
 
     if (n > slides.length) {
         slideIndex = 1
