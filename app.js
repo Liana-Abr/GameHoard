@@ -54,4 +54,4 @@ app.use((req, res) => {
         catalogue_tabs: catalogue_tabs
     });
 });
-app.listen(port, (e) => e ? "" : console.log(`Server running. http://localhost:${port}`));
+app.listen(port, (e) => e ? console.log(e) : console.log(`Server running.`));
