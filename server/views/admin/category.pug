@@ -2,4 +2,21 @@ extends ../admin
 block links 
     a(href='../admin') Back
 block addForm 
-    
+    h4 Добавить категорию:
+    form(action="/api/category/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Название:
+        input( required type="text" name="name_category" size="50")
+        
+        input(type="submit" value="Добавить категорию")
+block updateForm 
+    h4 Изменить категорию:
+    form(action="/api/category/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Категория:
+        select(required name="id_category")
+            each i in category
+                option(value= i.id_category) #{i.name_category}
+        label Название:
+        input( required type="text" name="name_category" size="50")
+        input(type="submit" value="Изменить категорию")
+block deleteForm 
+    h4 Удалить категорию:

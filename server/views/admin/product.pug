@@ -44,49 +44,49 @@ block addForm
         input(type="submit" value="Добавить продукт")
 block updateForm 
     h4 Изменить продукт:
-    //- form(action="/api/product", method="PUT", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
-    //-     label Продукт:
-    //-     select(required name="id_product")
-    //-         each i in product
-    //-             option(value= i.id_product) #{i.name_product}
-    //-     label Название:
-    //-     input( required type="text" name="name_product" size="50")
-    //-     label Издатель:
-    //-     select(required name="izdatel_id")
-    //-         each i in izdatel
-    //-             option(value= i.id_izdatel) #{i.name_izdatel}
-    //-     label Дата выпуска (год):
-    //-     input( required type="number" name="date_vypusk_product" max="9999" size="4")
-    //-     label Категория:
-    //-     select(required name="category_id")
-    //-         each i in category
-    //-             option(value= i.id_category) #{i.name_category}
-    //-     label Подкатегория:
-    //-     select(required name="podcategory_id")
-    //-         each i in podcategory
-    //-             option(data-category= i.category_id value= i.id_podcategory) #{i.name_podcategory}
-    //-     label Кол-во игроков:
-    //-     select(required name="min_igrok_product")
-    //-         option(value="1") 1+
-    //-         option(value="2") 2+
-    //-         option(value="4") 4+
-    //-     label Возраст:
-    //-     select(required name="vozrast_ogranich_product")
-    //-         option(value="10") 10+
-    //-         option(value="14") 14+
-    //-         option(value="16") 16+
-    //-     label Описание:
-    //-         textarea(name="opisanie_product", cols="30", rows="10") 
-    //-     label Цена:
-    //-     input(required type='number' name="price_product")
-    //-     label Время игры:
-    //-     select(required name="vremya_igry_product")
-    //-         option(value="20") 20+
-    //-         option(value="60") 60+
-    //-         option(value="120") 120+
-    //-     label Изображение:
-    //-     input(type="file" name="image_product" accept="image/*")
-    //-     input(type="submit" value="Изменить продукт")
+    form(action="/api/product/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Продукт:
+        select(required name="id_product")
+            each i in product
+                option(value= i.id_product) #{i.name_product}
+        label Название:
+        input( required type="text" name="name_product" size="50")
+        label Издатель:
+        select(required name="izdatel_id")
+            each i in izdatel
+                option(value= i.id_izdatel) #{i.name_izdatel}
+        label Дата выпуска (год):
+        input( required type="number" name="date_vypusk_product" max="9999" size="4")
+        label Категория:
+        select(required name="category_id")
+            each i in category
+                option(value= i.id_category) #{i.name_category}
+        label Подкатегория:
+        select(required name="podcategory_id")
+            each i in podcategory
+                option(data-category= i.category_id value= i.id_podcategory) #{i.name_podcategory}
+        label Кол-во игроков:
+        select(required name="min_igrok_product")
+            option(value="1") 1+
+            option(value="2") 2+
+            option(value="4") 4+
+        label Возраст:
+        select(required name="vozrast_ogranich_product")
+            option(value="10") 10+
+            option(value="14") 14+
+            option(value="16") 16+
+        label Описание:
+            textarea(name="opisanie_product", cols="30", rows="10") 
+        label Цена:
+        input(required type='number' name="price_product")
+        label Время игры:
+        select(required name="vremya_igry_product")
+            option(value="20") 20+
+            option(value="60") 60+
+            option(value="120") 120+
+        label Изображение:
+        input(type="file" name="image_product" accept="image/*")
+        input(type="submit" value="Изменить продукт")
 block deleteForm 
     h4 Удалить продукт:
 

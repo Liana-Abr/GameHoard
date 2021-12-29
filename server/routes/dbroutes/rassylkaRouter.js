@@ -5,7 +5,7 @@ const rassylkaController = require('../../controllers/rassylkaController.js')
 router.post('/', rassylkaController.createRassylka)
 router.get('/', rassylkaController.getAllRassylka)
 router.get('/:id', rassylkaController.getRassylka)
-router.put('/', rassylkaController.updateRassylka)
+router.post('/update', rassylkaController.updateRassylka)
 router.delete('/', rassylkaController.deleteRassylka)
 
 module.exports = router

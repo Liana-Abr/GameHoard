@@ -5,7 +5,7 @@ const podcategoryController = require('../../controllers/podcategoryController.j
 router.post('/', podcategoryController.createPodcategory)
 router.get('/', podcategoryController.getAllPodcategory)
 router.get('/:id', podcategoryController.getPodcategory)
-router.put('/', podcategoryController.updatePodcategory)
+router.post('/update', podcategoryController.updatePodcategory)
 router.delete('/', podcategoryController.deletePodcategory)
 
 module.exports = router

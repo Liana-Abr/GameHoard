@@ -2,4 +2,36 @@ extends ../admin
 block links 
     a(href='../admin') Back
 block addForm 
+    h4 Добавить слайдер:
+    form(action="/api/slider/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Название:
+        input( required type="text" name="title_slider" size="50")
+        label Продукт:
+        select(required name="product_id")
+            each i in product
+                option(value= i.id_product) #{i.name_product}
+        label Описание:
+            textarea(name="opisanie_slider", cols="30", rows="10") 
+        input(type="submit" value="Добавить слайдер")
+block updateForm 
+    h4 Изменить слайдер:
+    form(action="/api/slider/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Слайдер:
+        select(required name="id_slider")
+            each i in slider
+                //- each o in product 
+                    if i.product_id == o.id_product
+                        option(value= i.id_slider) #{o.name_product}
+                option(value= i.id_slider) #{i.title_slider}
+        label Название:
+        input( required type="text" name="title_slider" size="50")
+        label Продукт:
+        select(required name="product_id")
+            each i in product
+                option(value= i.id_product) #{i.name_product}
+        label Описание:
+            textarea(name="opisanie_slider", cols="30", rows="10") 
+        input(type="submit" value="Изменить слайдер")
+block deleteForm 
+    h4 Удалить слайдер:
     

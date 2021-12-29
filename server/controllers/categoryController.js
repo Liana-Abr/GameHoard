@@ -2,9 +2,13 @@ const db = require('../../db.js')
 
 class CategoryController{
     async createCategory(req, res){
-        const{name_category} = req.body
-        const category = await db.query('call category_insert($1)', [name_category])
-        res.json()
+        try{
+            const{name_category} = req.body
+            const category = await db.query('call category_insert($1)', [name_category])
+            res.redirect('/admin/category')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async getAllCategory(req, res){
         const category = await db.query('select * from category')
@@ -16,9 +20,13 @@ class CategoryController{
         res.json(category.rows[0])
     }
     async updateCategory(req, res){
-        const {id_category, name_category} = req.body
-        const category = await db.query('call category_update($1, $2)', [id_category, name_category])
-        res.json()
+        try{
+            const {id_category, name_category} = req.body
+            const category = await db.query('call category_update($1, $2)', [id_category, name_category])
+            res.redirect('/admin/category')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async deleteCategory(req, res){
         const id = req.query.id

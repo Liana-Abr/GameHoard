@@ -112,7 +112,7 @@ router.get('/slider', async (req, res) => {
 });
 
 router.get('/sposob_oplaty', async (req, res) => {
-    const slider = await db.query(`select * from sposob_oplaty`);
+    const sposob_oplaty = await db.query(`select * from sposob_oplaty`);
     if (req.query.email == process.env.EMAIL && req.query.password == process.env.PASSWORD) {
         res.cookie('role', 'admin')
     }

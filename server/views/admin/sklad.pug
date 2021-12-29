@@ -2,4 +2,30 @@ extends ../admin
 block links 
     a(href='../admin') Back
 block addForm 
-    
+    h4 Добавить запись на складе:
+    form(action="/api/sklad/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Продукт:
+        select(required name="product_id")
+            each i in product
+                option(value= i.id_product) #{i.name_product}
+        label Кол-во на складе:
+        input( required type="number" name="nalichie_sklad" size="4")
+        input(type="submit" value="Добавить запись на складе")
+block updateForm 
+    h4 Изменить запись на складе:
+    form(action="/api/sklad/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Запись:
+        select(required name="id_sklad")
+            each i in sklad
+                each o in product 
+                    if o.id_product == i.product_id
+                        option(value= i.id_sklad) #{o.name_product}
+        label Продукт:
+        select(required name="product_id")
+            each i in product
+                option(value= i.id_product) #{i.name_product}
+        label Кол-во на складе:
+        input( required type="number" name="nalichie_sklad" size="4")
+        input(type="submit" value="Изменить запись на складе")
+block deleteForm 
+    h4 Удалить запись на складе:    

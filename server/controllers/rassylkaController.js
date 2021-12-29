@@ -2,9 +2,13 @@ const db = require('../../db.js')
 
 class RassylkaController{
     async createRassylka(req, res){
-        const{email_rassylka} = req.body
-        const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka])
-        res.json()
+        try{
+            const{email_rassylka} = req.body
+            const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka])
+            res.redirect('/admin/rassylka')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async getAllRassylka(req, res){
         const rassylka = await db.query('select * from rassylka')
@@ -16,9 +20,13 @@ class RassylkaController{
         res.json(rassylka.rows[0])
     }
     async updateRassylka(req, res){
-        const {id_rassylka, email_rassylka} = req.body
-        const rassylka = await db.query('call rassylka_update($1, $2)', [id_rassylka, email_rassylka])
-        res.json()
+        try{
+            const {id_rassylka, email_rassylka} = req.body
+            const rassylka = await db.query('call rassylka_update($1, $2)', [id_rassylka, email_rassylka])
+            res.redirect('/admin/rassylka')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async deleteRassylka(req, res){
         const id = req.query.id

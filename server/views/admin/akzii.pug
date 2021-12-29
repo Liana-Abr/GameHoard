@@ -11,7 +11,6 @@ block addForm
 block updateForm 
     h4 Изменить акцию:
     form(action="/api/akzii/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
-        input(type="hidden" name="_METHOD" value="PUT")
         label Акция:
         select(required name="id_akzii")
             each i in akzii

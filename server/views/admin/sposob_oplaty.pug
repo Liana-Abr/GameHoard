@@ -2,4 +2,21 @@ extends ../admin
 block links 
     a(href='../admin') Back
 block addForm 
-    
+    h4 Добавить способ оплаты:
+    form(action="/api/sposob_oplaty/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Название:
+        input( required type="text" name="name_sposob_oplaty" size="50")
+        
+        input(type="submit" value="Добавить способ оплаты")
+block updateForm 
+    h4 Изменить способ оплаты:
+    form(action="/api/sposob_oplaty/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Способ оплаты:
+        select(required name="id_sposob_oplaty")
+            each i in sposob_oplaty
+                option(value= i.id_sposob_oplaty) #{i.name_sposob_oplaty}
+        label Название:
+        input( required type="text" name="name_sposob_oplaty" size="50")
+        input(type="submit" value="Изменить способ оплаты")
+block deleteForm 
+    h4 Удалить способ оплаты:    

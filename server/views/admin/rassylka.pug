@@ -2,4 +2,20 @@ extends ../admin
 block links 
     a(href='../admin') Back
 block addForm 
-    
+    h4 Добавить почту для рассылки:
+    form(action="/api/rassylka/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Почта:
+        input( required type="text" name="email_rassylka" size="50")
+        input(type="submit" value="Добавить почту для рассылки")
+block updateForm 
+    h4 Изменить почту для рассылки:
+    form(action="/api/rassylka/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Старая почта:
+        select(required name="id_rassylka")
+            each i in rassylka
+                option(value= i.id_rassylka) #{i.email_rassylka}
+        label Почта:
+        input( required type="text" name="email_rassylka" size="50")
+        input(type="submit" value="Изменить почту для рассылки")
+block deleteForm 
+    h4 Удалить почту для рассылки:

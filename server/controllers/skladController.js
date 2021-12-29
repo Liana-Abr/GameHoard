@@ -2,9 +2,13 @@ const db = require('../../db.js')
 
 class SkladController{
     async createSklad(req, res){
-        const{product_id, nalichie_sklad} = req.body
-        const sklad = await db.query('call sklad_insert($1, $2)', [product_id, nalichie_sklad])
-        res.json()
+        try{
+            const{product_id, nalichie_sklad} = req.body
+            const sklad = await db.query('call sklad_insert($1, $2)', [product_id, nalichie_sklad])
+            res.redirect('/admin/sklad')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async getAllSklad(req, res){
         const {product_id} = req.query
@@ -21,23 +25,27 @@ class SkladController{
         res.json(sklad.rows[0])
     }
     async updateSklad(req, res){
-        const {id_sklad, product_id, nalichie_sklad} = req.body
-        const sklad = await db.query('call sklad_update($1, $2, $3)', [id_sklad, product_id, nalichie_sklad])
-        res.json()
+        try{
+            const {id_sklad, product_id, nalichie_sklad} = req.body
+            const sklad = await db.query('call sklad_update($1, $2, $3)', [id_sklad, product_id, nalichie_sklad])
+            res.redirect('/admin/sklad')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async updateSkladNalichie(req, res){
         const {id_sklad, nalichie_sklad} = req.query
         if(nalichie_sklad >= 0){
-            const sklad = await db.query('call sklad_add_nalichie($1, $3)', [id_sklad, nalichie_sklad])
+            const sklad = await db.query('call sklad_add_nalichie($1, $2)', [id_sklad, nalichie_sklad])
         }
         else{
-            const sklad = await db.query('call sklad_sub_nalichie($1, $3)', [id_sklad, nalichie_sklad])
+            const sklad = await db.query('call sklad_sub_nalichie($1, $2)', [id_sklad, nalichie_sklad])
         }
         res.json()
     }
     async updateSkladProdano(req, res){
         const {id_sklad, prodano_sklad} = req.query
-        const sklad = await db.query('call sklad_add_prodano($1, $3)', [id_sklad, prodano_sklad])
+        const sklad = await db.query('call sklad_add_prodano($1, $2)', [id_sklad, prodano_sklad])
         res.json()
     }
     async deleteSklad(req, res){

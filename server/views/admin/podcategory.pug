@@ -2,4 +2,30 @@ extends ../admin
 block links 
     a(href='../admin') Back
 block addForm 
+    h4 Добавить подкатегорию:
+    form(action="/api/podcategory/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Название:
+        input( required type="text" name="name_podcategory" size="50")
+        label Категория:
+        select(required name="category_id")
+            each i in category
+                option(value= i.id_category) #{i.name_category}
+        input(type="submit" value="Добавить подкатегорию")
+block updateForm 
+    h4 Изменить подкатегорию:
+    form(action="/api/podcategory/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Подкатегория:
+        select(required name="id_podcategory")
+            each i in podcategory
+                option(value= i.id_podcategory) #{i.name_podcategory}
+        label Название:
+        input( required type="text" name="name_podcategory" size="50")
+        label Категория:
+        select(required name="category_id")
+            each i in category
+                option(value= i.id_category) #{i.name_category}
+        input(type="submit" value="Изменить подкатегорию")
+block deleteForm 
+    h4 Удалить подкатегорию:
+
     

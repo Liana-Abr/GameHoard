@@ -2,9 +2,13 @@ const db = require('../../db.js')
 
 class PodcategoryController{
     async createPodcategory(req, res){
-        const{name_podcategory, category_id} = req.body
-        const podcategory = await db.query('call podcategory_insert($1, $2)', [name_podcategory, category_id])
-        res.json()
+        try{
+            const{name_podcategory, category_id} = req.body
+            const podcategory = await db.query('call podcategory_insert($1, $2)', [name_podcategory, category_id])
+            res.redirect('/admin/podcategory')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async getAllPodcategory(req, res){
         const {category_id} = req.query
@@ -21,9 +25,13 @@ class PodcategoryController{
         res.json(podcategory.rows[0])
     }
     async updatePodcategory(req, res){
-        const {id_podcategory, name_podcategory, category_id} = req.body
-        const podcategory = await db.query('call podcategory_update($1, $2, $3)', [id_podcategory, name_podcategory, category_id])
-        res.json()
+        try{
+            const {id_podcategory, name_podcategory, category_id} = req.body
+            const podcategory = await db.query('call podcategory_update($1, $2, $3)', [id_podcategory, name_podcategory, category_id])
+            res.redirect('/admin/podcategory')
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async deletePodcategory(req, res){
         const id = req.query.id

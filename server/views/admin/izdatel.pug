@@ -2,4 +2,22 @@ extends ../admin
 block links 
     a(href='../admin') Back
 block addForm 
+    h4 Добавить издателя:
+    form(action="/api/izdatel/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Название:
+        input( required type="text" name="name_izdatel" size="50")
+        
+        input(type="submit" value="Добавить издателя")
+block updateForm 
+    h4 Изменить издателя:
+    form(action="/api/izdatel/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Издатель:
+        select(required name="id_izdatel")
+            each i in izdatel
+                option(value= i.id_izdatel) #{i.name_izdatel}
+        label Название:
+        input( required type="text" name="name_izdatel" size="50")
+        input(type="submit" value="Изменить издателя")
+block deleteForm 
+    h4 Удалить издателя:
     
