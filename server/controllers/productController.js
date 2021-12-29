@@ -4,8 +4,6 @@ class ProductController {
     async createProduct(req, res) {
         try {
             if (!req.files) {
-                console.log(req);
-                console.log(req.body);
                 res.send({
                     status: false,
                     message: 'No file uploaded'
@@ -14,7 +12,7 @@ class ProductController {
                 const { name_product, izdatel_id, date_vypusk_product, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product } = req.body;
                 const img = req.files.image_product;
                 const mod_name = name_product.replace('+', " ")
-                const date_mod = date_vypusk_product+ '-01-01'
+                const date_mod = date_vypusk_product + '-01-01'
                 const imgname = img.name;
                 const product = await db.query('call product_insert($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', [mod_name, izdatel_id, date_mod, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product, imgname]);
                 img.mv('public/images/' + imgname, (err) => {
@@ -82,17 +80,15 @@ class ProductController {
     async updateProduct(req, res) {
         try {
             if (!req.files) {
-                console.log(req);
-                console.log(req.body);
                 res.send({
                     status: false,
                     message: 'No file uploaded'
                 });
             } else {
-                const {id_product, name_product, izdatel_id, date_vypusk_product, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product} = req.body;
+                const { id_product, name_product, izdatel_id, date_vypusk_product, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product } = req.body;
                 const img = req.files.image_product;
                 const mod_name = name_product.replace('+', " ")
-                const date_mod = date_vypusk_product+ '-01-01'
+                const date_mod = date_vypusk_product + '-01-01'
                 const imgname = img.name;
                 const product = await db.query('call product_update($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)', [id_product, mod_name, izdatel_id, date_mod, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product, imgname]);
                 img.mv('public/images/' + imgname, (err) => {
@@ -108,7 +104,7 @@ class ProductController {
         }
     }
     async deleteProduct(req, res) {
-        try{
+        try {
             const id = req.body.id;
             const product = await db.query('delete from product where id_product = $1', [id]);
             res.redirect('/admin/product');
