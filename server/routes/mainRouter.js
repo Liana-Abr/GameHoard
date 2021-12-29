@@ -6,8 +6,7 @@ const db = require('../../db.js');
 
 const links = [
     { name: "Главная", url: "/" },
-    { name: "Каталог", url: "/catalogue?p=1" },
-    { name: "О нас", url: "/contacts" }
+    { name: "Каталог", url: "/catalogue?p=1" }
 ];
 
 const catalogue_tabs = [
