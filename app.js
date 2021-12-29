@@ -5,7 +5,7 @@ const dbRouter = require("./server/routes/dbRouter.js");
 const adminRouter = require("./server/routes/adminRouter.js");
 const port = process.env.PORT || 8080;
 const stylus = require("stylus");
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
 const autoprefixer = require('autoprefixer-stylus');
 const fileUpload = require('express-fileupload');
 

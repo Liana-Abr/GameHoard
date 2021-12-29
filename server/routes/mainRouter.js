@@ -103,11 +103,35 @@ router.get("/catalogue/:category", checkMiddleware, async (req, res) => {
     } else if (req.params.category == 'models') {
         category_id = 5;
     }
+
+    let podcat_id;
+    if (req.query.podcat == 'w40k') {
+        podcat_id = 1;
+    } else if (req.query.podcat == 'bg') {
+        podcat_id = 2;
+    } else if (req.query.podcat == 'mtg') {
+        podcat_id = 3;
+    } else if (req.query.podcat == 'berserk') {
+        podcat_id = 4;
+    } else if (req.query.podcat == 'dnd') {
+        podcat_id = 5;
+    } else if (req.query.podcat == 'pf') {
+        podcat_id = 6;
+    }
+
     let products;
-    if (req.headers.check) {
-        products = await db.query(`select * from product ${req.headers.check} and category_id = $1`, [category_id]);
+    if (req.query.podcat) {
+        if (req.headers.check) {
+            products = await db.query(`select * from product ${req.headers.check} and podcategory_id = ${podcat_id} and category_id = $1`, [category_id]);
+        } else {
+            products = await db.query(`select * from product where podcategory_id = ${podcat_id} and category_id = $1`, [category_id]);
+        }
     } else {
-        products = await db.query('select * from product where category_id = $1', [category_id]);
+        if (req.headers.check) {
+            products = await db.query(`select * from product ${req.headers.check} and category_id = $1`, [category_id]);
+        } else {
+            products = await db.query('select * from product where category_id = $1', [category_id]);
+        }
     }
     res.render("catalogue", {
         title: "Каталог",
