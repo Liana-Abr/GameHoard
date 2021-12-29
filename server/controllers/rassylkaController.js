@@ -3,9 +3,10 @@ const db = require('../../db.js')
 class RassylkaController{
     async createRassylka(req, res){
         try{
+            const url = req.query.url.replaceAll('|', '/')
             const{email_rassylka} = req.body
             const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka])
-            res.redirect('/admin/rassylka')
+            res.redirect(url)
         } catch (err) {
             res.status(500).send(err);
         }

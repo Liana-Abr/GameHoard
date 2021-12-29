@@ -4,10 +4,10 @@ block head
 block body
     .container
         .email__connect
-            form(method="GET" action="/send_email").email__container
+            form(method="POST" action="/api/rassylka/?url=|catalogue", enctype="multipart/form-data").email__container
                 h2 ПОЛУЧАЙТЕ СКИДКИ И ПОДАРКИ
                 .inp__container 
-                    input(type="email" placeholder="Ваше e-mail" name="email" required)
+                    input(type="email" placeholder="Ваш e-mail" name="email_rassylka" required)
                     input(type="submit", value="ПОДПИСАТЬСЯ")
         .popup
             .popup__content
