@@ -41,45 +41,6 @@ router.get("/", async (req, res) => {
     });
 });
 
-router.get("/send_email", async (req, res) => {
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.SENDEMAIL,
-            pass: process.env.SENDPASS
-        }
-    });
-    const mailOptions = {
-        from: process.env.SENDEMAIL,
-        to: req.query.email,
-        subject: 'HELLO EMAIL WORLD',
-        text: 'Hello to myself!',
-        html: `<!doctype html>
-        <html ⚡4email>
-
-            <head>
-            <meta charset="utf-8">
-            <style amp4email-boilerplate>body{visibility:hidden}</style>
-            <script async src="https://cdn.ampproject.org/v0.js"></script>
-            <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
-            </head>
-
-            <body style="width: 100%;display: flex; align-items: center; justify-content: center; background: #fff;">
-            <p><b>Yo dude</b>, what's up?</p>
-            <p>Сообщение отправленное через Node.js с использованием библиотеки nodemailer</p>
-
-            <p>Это письмо было отправлено автоматически. Пожалуйста, не отвечайте на него.
-
-            <p>А вот танцующий котиг:<br/>
-            <img src="https://acegif.com/wp-content/gifs/dancing-cat-41.gif" width="500" height="450"/>
-            </body>
-
-        </html>`
-    };
-
-    transporter.sendMail(mailOptions);
-    res.redirect('/');
-});
 router.get("/catalogue", checkMiddleware, async (req, res) => {
     const products = await db.query(`select * from product ${req.headers.check}`);
     res.render("catalogue", {
