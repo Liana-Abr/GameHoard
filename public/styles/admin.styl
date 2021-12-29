@@ -1,0 +1,60 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'
+
+// Цвета
+main = #EA581D // Оранжевый
+main2 = #212121 // Тёмный
+second = #FF6A00
+bg = white
+
+// Миксины
+dflex(f, a, j)
+    display flex
+    flex-direction f
+    align-items a
+    justify-content j
+
+// Стили
+body
+    color: main2
+    background-color: bg
+    overflow-x hidden
+    height 100%
+    min-height 100vh
+    margin 0
+    padding 0
+    dflex(column, center, space=arounds)
+    font-family 'Roboto', sans-serif;
+a
+    color: inherit
+    font-weight: bold
+    &:hover
+        color: main
+    &:active
+        color: inherit
+.auth
+    height: min-content
+    margin-top: 50px
+h1
+    color: main 
+h4
+    margin 30px 10px 15px
+input, select
+    margin-bottom: 1.3vh
+    border 1px solid hsla(0, 0%, 0%, 0.5)
+    margin-top: 0.7vh
+    outline: none
+    &:focus
+        border-color main
+input[type=submit]
+    border-color main2
+    background-color main2
+    color: white
+    &:hover
+        border-color main
+        background-color main
+        color: white
+    &:active
+        border-color inherit
+        background-color main2
+        color: white
+
