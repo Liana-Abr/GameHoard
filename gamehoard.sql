@@ -428,7 +428,7 @@ select * from category;
 select * from podcategory;
 select * from rassylka;
 select * from sklad;
-select * from slider;
+select * from slider; 
 
 
 
