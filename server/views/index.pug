@@ -13,8 +13,6 @@ block body
                     each o in products 
                         if o.id_product == i.product_id 
                             img(src='/images/'+o.image_product alt="").img
-            .mySlides.fade
-                img(src="/images/cat.jpg" style="width: 100%" alt="").img
         br
         div(style="text-align: center;")
             span(class="dot" onclick="currentSlide(1)")
