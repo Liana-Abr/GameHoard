@@ -108,9 +108,13 @@ class ProductController {
         }
     }
     async deleteProduct(req, res) {
-        const id = req.query.id;
-        const product = await db.query('delete from product where id_product = $1', [id]);
-        res.json();
+        try{
+            const id = req.body.id;
+            const product = await db.query('delete from product where id_product = $1', [id]);
+            res.redirect('/admin/product');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async setSkidkaProduct(req, res) {
         const { id_product, skidka_product } = req.body;

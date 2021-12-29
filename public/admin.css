@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: arounds;
+  justify-content: start;
   font-family: 'Roboto', sans-serif;
 }
 a {
@@ -26,6 +26,15 @@ a:active {
 .auth {
   height: min-content;
   margin-top: 50px;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.login>input {
+  margin-right: 20px;
 }
 h1 {
   color: #ea581d;

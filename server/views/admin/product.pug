@@ -89,6 +89,12 @@ block updateForm
         input(type="submit" value="Изменить продукт")
 block deleteForm 
     h4 Удалить продукт:
+    form(action="/api/product/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Продукт:
+        select(required name="id")
+            each i in product
+                option(value= i.id_product) #{i.name_product}
+        input(type="submit" value="Удалить продукт")
 
 
 block scripts 

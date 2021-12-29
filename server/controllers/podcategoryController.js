@@ -34,9 +34,13 @@ class PodcategoryController{
         }
     }
     async deletePodcategory(req, res){
-        const id = req.query.id
-        const podcategory = await db.query('delete from podcategory where id_podcategory = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const podcategory = await db.query('delete from podcategory where id_podcategory = $1', [id])
+            res.redirect('/admin/podcategory');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 

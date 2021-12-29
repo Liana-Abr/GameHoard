@@ -20,3 +20,9 @@ block updateForm
         input(type="submit" value="Изменить способ оплаты")
 block deleteForm 
     h4 Удалить способ оплаты:    
+    form(action="/api/sposob_oplaty/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Способ оплаты:
+        select(required name="id")
+            each i in sposob_oplaty
+                option(value= i.id_sposob_oplaty) #{i.name_sposob_oplaty}
+        input(type="submit" value="Удалить способ оплаты")

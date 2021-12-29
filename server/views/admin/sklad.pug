@@ -19,7 +19,7 @@ block updateForm
             each i in sklad
                 each o in product 
                     if o.id_product == i.product_id
-                        option(value= i.id_sklad) #{o.name_product}
+                        option(value= i.id_sklad) №#{i.id_sklad}: #{o.name_product}
         label Продукт:
         select(required name="product_id")
             each i in product
@@ -28,4 +28,12 @@ block updateForm
         input( required type="number" name="nalichie_sklad" size="4")
         input(type="submit" value="Изменить запись на складе")
 block deleteForm 
-    h4 Удалить запись на складе:    
+    h4 Удалить запись на складе:   
+    form(action="/api/sklad/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Запись:
+        select(required name="id")
+            each i in sklad
+                each o in product 
+                    if o.id_product == i.product_id
+                        option(value= i.id_sklad) №#{i.id_sklad}:  #{o.name_product}
+        input(type="submit" value="Удалить запись на складе") 

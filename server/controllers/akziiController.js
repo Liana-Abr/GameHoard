@@ -31,9 +31,13 @@ class AkziiController{
         }
     }
     async deleteAkzii(req, res){
-        const id = req.query.id
-        const akzii = await db.query('delete from akzii where id_akzii = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const akzii = await db.query('delete from akzii where id_akzii = $1', [id])
+            res.redirect('/admin/akzii');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 

@@ -6,6 +6,6 @@ router.post('/', rassylkaController.createRassylka)
 router.get('/', rassylkaController.getAllRassylka)
 router.get('/:id', rassylkaController.getRassylka)
 router.post('/update', rassylkaController.updateRassylka)
-router.delete('/', rassylkaController.deleteRassylka)
+router.post('/delete', rassylkaController.deleteRassylka)
 
 module.exports = router

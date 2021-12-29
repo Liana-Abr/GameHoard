@@ -29,9 +29,13 @@ class IzdatelController{
         }
     }
     async deleteIzdatel(req, res){
-        const id = req.query.id
-        const izdatel = await db.query('delete from izdatel where id_izdatel = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const izdatel = await db.query('delete from izdatel where id_izdatel = $1', [id])
+            res.redirect('/admin/izdatel');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 

@@ -22,7 +22,7 @@ body
     min-height 100vh
     margin 0
     padding 0
-    dflex(column, center, space=arounds)
+    dflex(column, center, start)
     font-family 'Roboto', sans-serif;
 a
     color: inherit
@@ -34,6 +34,10 @@ a
 .auth
     height: min-content
     margin-top: 50px
+.login
+    dflex(column, start, start)
+    &>input
+        margin-right: 20px
 h1
     color: main 
 h4

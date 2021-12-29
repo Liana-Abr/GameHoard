@@ -29,9 +29,13 @@ class CategoryController{
         }
     }
     async deleteCategory(req, res){
-        const id = req.query.id
-        const category = await db.query('delete from category where id_category = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const category = await db.query('delete from category where id_category = $1', [id])
+            res.redirect('/admin/category');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 

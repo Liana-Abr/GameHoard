@@ -6,6 +6,6 @@ router.post('/', zakazController.createZakaz)
 router.get('/', zakazController.getAllZakaz)
 router.get('/:id', zakazController.getZakaz)
 router.post('/update', zakazController.updateZakaz)
-router.delete('/', zakazController.deleteZakaz)
+router.post('/delete', zakazController.deleteZakaz)
 
 module.exports = router

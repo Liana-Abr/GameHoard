@@ -29,9 +29,13 @@ class RassylkaController{
         }
     }
     async deleteRassylka(req, res){
-        const id = req.query.id
-        const rassylka = await db.query('delete from rassylka where id_rassylka = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const rassylka = await db.query('delete from rassylka where id_rassylka = $1', [id])
+            res.redirect('/admin/rassylka');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 

@@ -34,4 +34,9 @@ block updateForm
         input(type="submit" value="Изменить слайдер")
 block deleteForm 
     h4 Удалить слайдер:
-    
+    form(action="/api/slider/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Слайдер:
+        select(required name="id")
+            each i in slider
+                option(value= i.id_slider) #{i.title_slider}
+        input(type="submit" value="Удалить слайдер")

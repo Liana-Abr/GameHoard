@@ -29,9 +29,13 @@ class SliderController{
         }
     }
     async deleteSlider(req, res){
-        const id = req.query.id
-        const slider = await db.query('delete from slider where id_slider = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const slider = await db.query('delete from slider where id_slider = $1', [id])
+            res.redirect('/admin/slider');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 

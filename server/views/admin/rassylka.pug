@@ -19,3 +19,9 @@ block updateForm
         input(type="submit" value="Изменить почту для рассылки")
 block deleteForm 
     h4 Удалить почту для рассылки:
+    form(action="/api/rassylka/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Почта:
+        select(required name="id")
+            each i in rassylka
+                option(value= i.id_rassylka) #{i.email_rassylka}
+        input(type="submit" value="Удалить почту для рассылки")

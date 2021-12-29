@@ -19,5 +19,11 @@ block updateForm
         input( required type="text" name="name_akzii" size="50")
         input(type="submit" value="Изменить акцию")
 block deleteForm 
-    h4 Удалить продукт:
+    h4 Удалить акцию:
+    form(action="/api/akzii/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Акция:
+        select(required name="id")
+            each i in akzii
+                option(value= i.id_akzii) #{i.name_akzii}
+        input(type="submit" value="Удалить акцию")
     

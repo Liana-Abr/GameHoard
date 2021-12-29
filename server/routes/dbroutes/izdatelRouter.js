@@ -6,6 +6,6 @@ router.post('/', izdatelController.createIzdatel)
 router.get('/', izdatelController.getAllIzdatel)
 router.get('/:id', izdatelController.getIzdatel)
 router.post('/update', izdatelController.updateIzdatel)
-router.delete('/', izdatelController.deleteIzdatel)
+router.post('/delete', izdatelController.deleteIzdatel)
 
 module.exports = router

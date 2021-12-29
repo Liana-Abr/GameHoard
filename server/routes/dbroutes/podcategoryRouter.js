@@ -6,6 +6,6 @@ router.post('/', podcategoryController.createPodcategory)
 router.get('/', podcategoryController.getAllPodcategory)
 router.get('/:id', podcategoryController.getPodcategory)
 router.post('/update', podcategoryController.updatePodcategory)
-router.delete('/', podcategoryController.deletePodcategory)
+router.post('/delete', podcategoryController.deletePodcategory)
 
 module.exports = router

@@ -29,9 +29,13 @@ class Sposob_OplatyController{
         }
     }
     async deleteSposob_Oplaty(req, res){
-        const id = req.query.id
-        const sposob_oplaty = await db.query('delete from sposob_oplaty where id_sposob_oplaty = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const sposob_oplaty = await db.query('delete from sposob_oplaty where id_sposob_oplaty = $1', [id])
+            res.redirect('/admin/sposob_oplaty');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 

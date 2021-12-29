@@ -27,5 +27,11 @@ block updateForm
         input(type="submit" value="Изменить подкатегорию")
 block deleteForm 
     h4 Удалить подкатегорию:
+    form(action="/api/podcategory/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Подкатегория:
+        select(required name="id")
+            each i in podcategory
+                option(value= i.id_podcategory) #{i.name_podcategory}
+        input(type="submit" value="Удалить подкатегорию")
 
     

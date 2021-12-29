@@ -20,3 +20,9 @@ block updateForm
         input(type="submit" value="Изменить категорию")
 block deleteForm 
     h4 Удалить категорию:
+    form(action="/api/category/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Категория:
+        select(required name="id")
+            each i in category
+                option(value= i.id_category) #{i.name_category}
+        input(type="submit" value="Удалить категорию")

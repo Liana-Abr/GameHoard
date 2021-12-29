@@ -20,4 +20,10 @@ block updateForm
         input(type="submit" value="Изменить издателя")
 block deleteForm 
     h4 Удалить издателя:
+    form(action="/api/izdatel/delete", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Издатель:
+        select(required name="id")
+            each i in izdatel
+                option(value= i.id_izdatel) #{i.name_izdatel}
+        input(type="submit" value="Удалить издателя")
     

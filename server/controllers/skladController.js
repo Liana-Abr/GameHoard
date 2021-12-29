@@ -49,9 +49,13 @@ class SkladController{
         res.json()
     }
     async deleteSklad(req, res){
-        const id = req.query.id
-        const sklad = await db.query('delete from sklad where id_sklad = $1', [id])
-        res.json()
+        try{
+            const id = req.body.id
+            const sklad = await db.query('delete from sklad where id_sklad = $1', [id])
+            res.redirect('/admin/sklad');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
 }
 
