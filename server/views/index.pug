@@ -55,10 +55,10 @@ block body
                                     .time #{i.vremya_igry_product}+
             a(href="/catalogue/top").product__top__btn.showmore__btn ПОКАЗАТЬ ВСЕ
     .email__connect
-        form(method="GET" action="/send_email").email__container
+        form(method="POST" action="/api/rassylka/?url=|", enctype="multipart/form-data").email__container
             h2 ПОЛУЧАЙТЕ СКИДКИ И ПОДАРКИ
             .inp__container 
-                input(type="email" placeholder="Ваше e-mail" name="email" required)
+                input(type="email" placeholder="Ваш e-mail" name="email_rassylka" required)
                 input(type="submit", value="ПОДПИСАТЬСЯ")
     .wrapper
         .product
