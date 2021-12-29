@@ -1,0 +1,24 @@
+extends ../admin
+block links 
+    a(href='../admin') Назад
+    
+block addForm 
+    h4 Добавить акцию:
+    form(action="/api/akzii/", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        label Название:
+        input( required type="text" name="name_akzii" size="50")
+        input(type="submit" value="Добавить акцию")
+block updateForm 
+    h4 Изменить акцию:
+    form(action="/api/akzii/update", method="POST", enctype="multipart/form-data", style="display: flex; flex-direction: column;")
+        input(type="hidden" name="_METHOD" value="PUT")
+        label Акция:
+        select(required name="id_akzii")
+            each i in akzii
+                option(value= i.id_akzii) #{i.name_akzii}
+        label Название:
+        input( required type="text" name="name_akzii" size="50")
+        input(type="submit" value="Изменить акцию")
+block deleteForm 
+    h4 Удалить продукт:
+    

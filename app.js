@@ -2,12 +2,16 @@ require('dotenv').config();
 const express = require("express");
 const mainRouter = require("./server/routes/mainRouter.js");
 const dbRouter = require("./server/routes/dbRouter.js");
+const adminRouter = require("./server/routes/adminRouter.js");
 const port = process.env.PORT || 8080;
 const stylus = require("stylus");
+const cookieParser = require('cookie-parser')
 const autoprefixer = require('autoprefixer-stylus');
 const fileUpload = require('express-fileupload');
 
 const app = express();
+
+app.use(cookieParser());
 
 app.use(stylus.middleware({
     src: "./public/styles",
@@ -40,6 +44,7 @@ const catalogue_tabs = [
 
 app.use("/", mainRouter);
 app.use("/api", dbRouter);
+app.use("/admin", adminRouter);
 app.use((req, res) => {
     res.status(404);
     res.render('error', {

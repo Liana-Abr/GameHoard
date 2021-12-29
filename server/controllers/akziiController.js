@@ -2,9 +2,14 @@ const db = require('../../db.js')
 
 class AkziiController{
     async createAkzii(req, res){
-        const{name_akzii} = req.body
-        const akzii = await db.query('call akzii_insert($1)', [name_akzii])
-        res.json()
+        try {
+            const{name_akzii} = req.body
+            const mod_name = name_akzii.replace('+', " ")
+            const akzii = await db.query('call akzii_insert($1)', [mod_name])
+            res.redirect('/admin/akzii');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async getAllAkzii(req, res){
         const akzii = await db.query('select * from akzii')
@@ -16,9 +21,14 @@ class AkziiController{
         res.json(akzii.rows[0])
     }
     async updateAkzii(req, res){
-        const {id_akzii, name_akzii} = req.body
-        const akzii = await db.query('call akzii_update($1, $2)', [id_akzii, name_akzii])
-        res.json()
+        try{
+            const {id_akzii, name_akzii} = req.body
+            const mod_name = name_akzii.replace('+', " ")
+            const akzii = await db.query('call akzii_update($1, $2)', [id_akzii, mod_name])
+            res.redirect('/admin/akzii');
+        } catch (err) {
+            res.status(500).send(err);
+        }
     }
     async deleteAkzii(req, res){
         const id = req.query.id
