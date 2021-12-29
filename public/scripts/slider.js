@@ -7,11 +7,6 @@ function plusSlides(n) {
 
 function currentSlide(n) {
     showSlides(slideIndex = n);
-    if (n == 4) {
-        var cat = new Audio("../sounds/cat.wav"); // buffers automatically when created
-        cat.play();
-        return;
-    }
     var snd = new Audio("../sounds/file.wav"); // buffers automatically when created
     snd.play();
     return;
