@@ -4,24 +4,15 @@ block head
 block body
     .wrapper
         .showSlides-container
-            .mySlides.fade
-                .text
-                    p Неделя Dungeon & Dragons
-                    h1 СКИДКИ ДО 80%
-                    a(href="/catalogue/rpgames") Исcледовать
-                img(src="/images/dnd.jpg" alt="").img
-            .mySlides.fade
-                .text
-                    p Warhammer возвращается! </br> Новые наборы с приятными ценами!
-                    h1 УСПЕЙ КУПИТЬ
-                    a(href="/catalogue/warhammer") Исcледовать
-                img(src="/images/warhammer40kdrukhari.png" alt="warhammer40k").img
-            .mySlides.fade
-                .text
-                    p Легенды вернулись с новыми ценами! 
-                    h1 СКИДКИ ДО 70%
-                    a(href="/catalogue/ccg") Исcледовать
-                img(src="/images/mtgbazoviy19.jpg" alt="").img
+            each i in slider 
+                .mySlides.fade
+                    .text
+                        p #{i.opisanie_slider}
+                        h1 #{i.title_slider}
+                        a(href="/catalogue/rpgames") Исcледовать
+                    each o in products 
+                        if o.id_product == i.product_id 
+                            img(src='/images/'+o.image_product alt="").img
             .mySlides.fade
                 img(src="/images/cat.jpg" style="width: 100%" alt="").img
         br

@@ -29,11 +29,13 @@ const daygame = {
 
 router.get("/", async (req, res) => {
     const products = await db.query(`select * from product`);
+    const slider = await db.query(`select * from slider`);
     res.render("index", {
         title: "Настольные игры",
         links: links,
         catalogue_tabs: catalogue_tabs,
         products: products.rows,
+        slider: slider.rows,
         newproduct: products.rows,
         class: "dark"
     });
