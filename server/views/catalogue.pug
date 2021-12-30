@@ -118,9 +118,9 @@ block body
                                         img(src='/images/mainIcons/time.svg' alt=i.Name_Product).card__img__src
                                         .time #{i.vremya_igry_product}+
                 .pagination
-                    - for(var x = 1; x <= 7; x++)
-                        if x == page
-                            a(href='/catalogue?p='+x).pagination__tab.active__tab #{x}
-                        else
-                            a(href='/catalogue?p='+x).pagination__tab #{x}
+                    //- - for(var x = 1; x <= 7; x++)
+                    //-     if x == page
+                    //-         a(href='/catalogue?p='+x).pagination__tab.active__tab #{x}
+                    //-     else
+                    //-         a(href='/catalogue?p='+x).pagination__tab #{x}
 block scripts
