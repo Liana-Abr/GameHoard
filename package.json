@@ -20,6 +20,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "express-fileupload": "^1.2.1",
+    "express-sanitizer": "^1.0.6",
     "nodemailer": "^6.7.2",
     "pg": "^8.7.1",
     "pug": "^3.0.2",

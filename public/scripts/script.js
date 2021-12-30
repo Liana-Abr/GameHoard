@@ -75,13 +75,15 @@ btn.addEventListener('click', (evt) => {
         let i = 0;
         arr.forEach(async (id) => {
             id = id.split('=');
-            fetch('/api/product/' + id[0]).then((res) => {
-                return res.json();
-            }).then((data) => {
-                card__main__container.appendChild(CreateCardInCart(data, id, i));
-                i += 1;
-                counterYes(id);
-            });
+            if (!isNaN(+id[0])) {
+                fetch('/api/product/' + id[0]).then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    card__main__container.appendChild(CreateCardInCart(data, id, i));
+                    i += 1;
+                    counterYes(id);
+                });
+            }
         });
     }
     const buttonClean = document.querySelector('.clean');

@@ -1,24 +1,26 @@
 const db = require('../../db.js')
 const nodemailer = require("nodemailer");
+const checkForSpecialChar = require('../scripts/checkForSpecialChar');
 
 class RassylkaController {
     async createRassylka(req, res) {
-        try {
-            const { email_rassylka } = req.body;
-            const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka])
-            const transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: process.env.SENDEMAIL,
-                    pass: process.env.SENDPASS
-                }
-            });
-            const mailOptions = {
-                from: process.env.SENDEMAIL,
-                to: email_rassylka,
-                subject: 'HELLO EMAIL WORLD',
-                text: 'Hello to myself!',
-                html: `<!doctype html>
+        const { email_rassylka } = req.body;
+        if (!checkForSpecialChar(email_rassylka)) {
+            try {
+                const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka]);
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: process.env.SENDEMAIL,
+                        pass: process.env.SENDPASS
+                    }
+                });
+                const mailOptions = {
+                    from: process.env.SENDEMAIL,
+                    to: email_rassylka,
+                    subject: 'HELLO EMAIL WORLD',
+                    text: 'Hello to myself!',
+                    html: `<!doctype html>
                 <html ⚡4email>
         
                     <head>
@@ -39,12 +41,13 @@ class RassylkaController {
                     </body>
         
                 </html>`
-            };
+                };
 
-            transporter.sendMail(mailOptions);
-            res.redirect('/');
-        } catch (err) {
-            res.status(500).send(err);
+                transporter.sendMail(mailOptions);
+                res.redirect('/');
+            } catch (err) {
+                res.status(500).send(err);
+            }
         }
     }
     async getAllRassylka(req, res) {

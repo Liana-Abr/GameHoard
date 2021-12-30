@@ -1,4 +1,5 @@
 const db = require('../../db.js');
+const checkForSpecialChar = require('../scripts/checkForSpecialChar');
 
 class ProductController {
     async createProduct(req, res) {
@@ -11,8 +12,8 @@ class ProductController {
             } else {
                 const { name_product, izdatel_id, date_vypusk_product, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product } = req.body;
                 const img = req.files.image_product;
-                const mod_name = name_product.replace('+', " ")
-                const date_mod = date_vypusk_product + '-01-01'
+                const mod_name = name_product.replace('+', " ");
+                const date_mod = date_vypusk_product + '-01-01';
                 const imgname = img.name;
                 const product = await db.query('call product_insert($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', [mod_name, izdatel_id, date_mod, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, opisanie_product, price_product, vremya_igry_product, imgname]);
                 img.mv('public/images/' + imgname, (err) => {
@@ -69,13 +70,19 @@ class ProductController {
     }
     async getProduct(req, res) {
         const id = req.params.id;
-        const product = await db.query('select * from product where id_product = $1', [id]);
-        res.json(product.rows[0]);
+        if (!isNaN(+id)) {
+            const product = await db.query('select * from product where id_product = $1', [id]);
+            res.json(product.rows[0]);
+        } else {
+            res.redirect('/catalogue');
+        }
     }
     async getOneProduct(req, res) {
-        const val = req.headers.value;
-        const product = await db.query(`select * from product where lower(name_product) like lower('${val}%')`);
-        res.json(product.rows);
+        const val = req.sanitize(req.headers.value);
+        if (!checkForSpecialChar(val)) {
+            const product = await db.query(`select * from product where lower(name_product) like lower('${val}%')`);
+            res.json(product.rows);
+        }
     }
     async updateProduct(req, res) {
         try {

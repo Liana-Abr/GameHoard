@@ -83,11 +83,11 @@ router.get("/catalogue/:category", checkMiddleware, async (req, res) => {
     }
 
     let products;
-    if (req.query.podcat) {
+    if (podcat_id > 0) {
         if (req.headers.check) {
-            products = await db.query(`select * from product ${req.headers.check} and podcategory_id = ${podcat_id} and category_id = $1`, [category_id]);
+            products = await db.query(`select * from product ${req.headers.check} and category_id = $1 and podcategory_id = $2`, [category_id, podcat_id]);
         } else {
-            products = await db.query(`select * from product where podcategory_id = ${podcat_id} and category_id = $1`, [category_id]);
+            products = await db.query(`select * from product where category_id = $1 and podcategory_id = $2`, [category_id, podcat_id]);
         }
     } else {
         if (req.headers.check) {
@@ -106,7 +106,12 @@ router.get("/catalogue/:category", checkMiddleware, async (req, res) => {
     });
 });
 router.get('/catalogue/product/:id', async (req, res) => {
-    const product = await db.query('select * from product where id_product = $1', [req.params.id]);
+    let product;
+    if (!isNaN(+req.params.id)) {
+        product = await db.query('select * from product where id_product = $1', [req.params.id]);
+    } else {
+        res.redirect('/');
+    }
     res.render('product', {
         product: product.rows[0],
         links: links,

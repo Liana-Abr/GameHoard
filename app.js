@@ -8,6 +8,7 @@ const stylus = require("stylus");
 const cookieParser = require('cookie-parser');
 const autoprefixer = require('autoprefixer-stylus');
 const fileUpload = require('express-fileupload');
+const expressSanitizer = require('express-sanitizer');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.set("view engine", "pug");
 app.use(express.static("./public"));
 app.use(express.json());
 app.use(fileUpload());
+app.use(expressSanitizer());
 
 const links = [
     { name: "Главная", url: "/" },
