@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 class RassylkaController {
     async createRassylka(req, res) {
         const { email_rassylka } = req.body;
+        const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka]);
         try {
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -40,7 +41,6 @@ class RassylkaController {
                 </html>`
             };
             transporter.sendMail(mailOptions);
-            const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka]);
             res.redirect('/');
         } catch (err) {
             res.status(500).send(err);
