@@ -758,7 +758,6 @@ footer .footer__container .footer__links li a:hover {
   flex-wrap: wrap;
 }
 .Cart-Container {
-  width: 50%;
   height: 60%;
   position: fixed;
   background-color: #fff;
@@ -1089,6 +1088,9 @@ dot:hover {
   .sideblocks__filters {
     width: 300px;
   }
+  .Cart-Container {
+    width: 900px;
+  }
 }
 @media screen and (max-width: 1200px) {
   .wrapper {
@@ -1117,5 +1119,8 @@ dot:hover {
   }
   .sideblocks__daygame {
     width: 200px;
+  }
+  .Cart-Container {
+    width: 600px;
   }
 }
