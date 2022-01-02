@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 class RassylkaController {
     async createRassylka(req, res) {
         const { email_rassylka } = req.body;
+        const { url } = req.query;
         const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka]);
         try {
             const transporter = nodemailer.createTransport({
@@ -41,7 +42,7 @@ class RassylkaController {
                 </html>`
             };
             transporter.sendMail(mailOptions);
-            res.redirect('/');
+            res.redirect(`${url}`);
         } catch (err) {
             res.status(500).send(err);
         }
