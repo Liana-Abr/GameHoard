@@ -25,7 +25,6 @@ body
     gap 30px
 
 .wrapper
-    width 60%
 
 .popup
     dflex(column, center, center)
@@ -34,7 +33,6 @@ body
     transition 0.2s all
     z-index 2
     .popup__content
-        width 60%
         height 100%
         dflex(column, center, flex-start)
         .popup__container
@@ -93,7 +91,6 @@ header.header
     .header__content
         dflex(row, center, space-between)
         height 100%
-        width 60%
         .logo
             width 95px
         .header__tabs
@@ -119,7 +116,6 @@ header.header
                 color main
         .header__icons
             height 100%
-            width 8%
             dflex(row, center, space-between)
         .header__search 
             width 20%
@@ -224,7 +220,6 @@ footer
     .email__container
         dflex(row, center, space-between)
         gap 20px    
-        width 50%
         height 100%
         h1
             width 50%
@@ -385,15 +380,13 @@ footer
     min-height 100%
     height 100%
     width 100%
-    gap 45px
+    gap 25px
     .catalogue__sideblocks
         dflex(column, flex-start, center)
         gap 20px
         height 100%
-        width 20%
         .sideblocks__daygame
             color main2
-            width 100%
             padding 20px
             height auto
             h2
@@ -445,7 +438,6 @@ footer
                     img
                         height 30%
         .sideblocks__filters
-            width 100%
             padding 20px
             height auto
             dflex(column, flex-start, center)
@@ -482,7 +474,6 @@ footer
                     background main
                     color #fff
     .catalogue__container
-        width 75%
         height 100%
         dflex(column, center, flex-end)
         gap 40px
@@ -794,3 +785,40 @@ hr
 //     from opacity  .4
 //     t0 opacity  1
  
+@media screen and (min-width: 1200px)
+    .wrapper
+        width 1150px
+    .popup__content
+        width 1150px
+    .header__content
+        width 1150px
+    .email__container
+        width 1150px
+    .catalogue__products
+        width 900px
+    .catalogue__sideblocks
+        width 340px
+    .sideblocks__daygame
+        width 300px
+    .sideblocks__filters
+        width 300px
+
+@media screen and (max-width: 1200px)
+    .wrapper
+        width 750px
+    .header__content
+        width 750px
+    .email__container
+        width 750px
+    .popup__content
+        width 750px
+    .catalogue__products
+        width 500px
+    .catalogue__container
+        width 500px
+    .catalogue__sideblocks
+        width 240px
+    .sideblocks__filters
+        width 200px
+    .sideblocks__daygame
+        width 200px
