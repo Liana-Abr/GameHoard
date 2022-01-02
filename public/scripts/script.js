@@ -23,7 +23,6 @@ function cartSum() {
     } else {
         itemm.innerHTML = `0 товаров`;
     }
-    console.log(sum);
 }
 
 function counterYes(id) {
@@ -39,9 +38,6 @@ function counterYes(id) {
 }
 
 function CreateCardInCart(commit, id) {
-    console.log(commit);
-    console.log(id);
-    console.log(document.cookie);
     let div = document.createElement('div');
     div.classList.add('Cart-Itemm');
     let price = +commit.price_product * +id[1];
