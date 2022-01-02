@@ -9,10 +9,9 @@ const Action = document.querySelector('.Action');
 const amount = document.querySelector('.total-amount');
 const itemm = document.querySelector('.itemm');
 
-function counterYes(id) {
-    let count = document.querySelectorAll('.count');
+function cartSum() {
     let sum = 0;
-    count.forEach(el => {
+    document.querySelectorAll('.count').forEach(el => {
         sum += +el.innerHTML;
     });
     if (sum == 1) {
@@ -24,6 +23,10 @@ function counterYes(id) {
     } else {
         itemm.innerHTML = `0 товаров`;
     }
+    console.log(sum);
+}
+
+function counterYes(id) {
     let counter = 0;
     amount.innerHTML = counter;
     document.querySelectorAll('.amount__price').forEach(el => {
@@ -35,11 +38,13 @@ function counterYes(id) {
     amount.innerHTML = `${counter}₽`;
 }
 
-function CreateCardInCart(commit, id, i) {
+function CreateCardInCart(commit, id) {
+    console.log(commit);
+    console.log(id);
+    console.log(document.cookie);
     let div = document.createElement('div');
     div.classList.add('Cart-Itemm');
-    let xy = +commit.price_product * +getCookieValue(id[0])[2 + i];
-    console.log(xy);
+    let price = +commit.price_product * +id[1];
     div.innerHTML = `
     <div class="first__container">
         <div class="image-box">
@@ -53,10 +58,10 @@ function CreateCardInCart(commit, id, i) {
     <div class="second__container">
         <div class="counter">
             <div class="btn"> Кол-во: </div>
-            <div class="count"> ${getCookieValue(id[0])[2 + i]} </div>
+            <div class="count"> ${id[1]} </div>
         </div>
         <div class="prices">
-            <div class="amount"> <span class="amount__price ${id[0 + i]}">${xy}</span>₽ </div>
+            <div class="amount"> <span class="amount__price ${id[0]}">${price}</span>₽ </div>
             <div class="remove" onclick=removeProductFromCart(${commit.id_product})>Удалить</div>
         </div>
     </div>
@@ -64,7 +69,7 @@ function CreateCardInCart(commit, id, i) {
     return div;
 }
 
-btn.addEventListener('click', (evt) => {
+btn.addEventListener('click', async (evt) => {
     basket.classList.add('basket__active');
     while (card__main__container.firstChild) {
         card__main__container.firstChild.remove();
@@ -72,16 +77,15 @@ btn.addEventListener('click', (evt) => {
     counterYes();
     if (document.cookie) {
         let arr = document.cookie.split('; ');
-        let i = 0;
         arr.forEach(async (id) => {
             id = id.split('=');
             if (!isNaN(+id[0])) {
-                fetch('/api/product/' + id[0]).then((res) => {
+                await fetch('/api/product/' + id[0]).then((res) => {
                     return res.json();
                 }).then((data) => {
-                    card__main__container.appendChild(CreateCardInCart(data, id, i));
-                    i += 1;
+                    card__main__container.appendChild(CreateCardInCart(data, id));
                     counterYes(id);
+                    cartSum();
                 });
             }
         });
@@ -133,7 +137,6 @@ function addProductToCart(id) {
     }
 
     if (document.cookie.length > 0) {
-        console.log(3);
         document.cookie = `${id}=1; SameSite=Lax; Secure; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
         return alert('Товар успешно добавлен в корзину');
     }
