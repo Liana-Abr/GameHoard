@@ -27,16 +27,21 @@ class RassylkaController {
                     <style amp4email-boilerplate>body{visibility:hidden}</style>
                     <script async src="https://cdn.ampproject.org/v0.js"></script>
                     <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+                    <style>
+                        body{
+                            color: #00000070;
+                        }
+                    </style>
                     </head>
         
-                    <body style="width: 100%;display: flex; align-items: center; justify-content: center; background: #fff;">
-                    <p><b>Yo dude</b>, what's up?</p>
-                    <p>Сообщение отправленное через Node.js с использованием библиотеки nodemailer</p>
+                    <body>
+                    <p>Здравствуйте, <b>${email_rassylka}</b>!</p>
+                    </br>
+                    <p>Спасибо, что подписались на рассылку!</br>Теперь мы будем уведомлять вас о распродажах и скидках на популярные товары!</p>
         
-                    <p>Это письмо было отправлено автоматически. Пожалуйста, не отвечайте на него.
+                    <p>Это письмо было отправлено автоматически. Пожалуйста, не отвечайте на него.</p>
         
-                    <p>А вот танцующий котиг:<br/>
-                    <img src="https://acegif.com/wp-content/gifs/dancing-cat-41.gif" width="500" height="450"/>
+                    <p>С наилудшими пожеланиями,</br>GameHoard.</p>
                     </body>
         
                 </html>`
