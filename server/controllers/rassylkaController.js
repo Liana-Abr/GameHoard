@@ -17,8 +17,8 @@ class RassylkaController {
             const mailOptions = {
                 from: process.env.SENDEMAIL,
                 to: email_rassylka,
-                subject: 'HELLO EMAIL WORLD',
-                text: 'Hello to myself!',
+                subject: 'Рассылка GameHoard',
+                text: 'Спасибо, что подписались на рассылку!',
                 html: `<!doctype html>
                 <html ⚡4email>
         
@@ -27,16 +27,11 @@ class RassylkaController {
                     <style amp4email-boilerplate>body{visibility:hidden}</style>
                     <script async src="https://cdn.ampproject.org/v0.js"></script>
                     <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
-                    <style>
-                        body{
-                            color: #00000070;
-                        }
-                    </style>
                     </head>
         
                     <body>
-                    <p>Здравствуйте, <b>${email_rassylka}</b>!</p>
-                    </br>
+                    <p>Здравствуйте, <b>${email_rassylka}</b>!</p></br>
+
                     <p>Спасибо, что подписались на рассылку!</br>
                     Теперь мы будем уведомлять вас о распродажах и скидках на популярные товары!</p>
         
