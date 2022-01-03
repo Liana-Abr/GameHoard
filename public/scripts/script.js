@@ -1,17 +1,17 @@
 const price = document.querySelector('input[name="max_price_product"]');
 const submit = document.querySelector('.filters__submit input[name="submit"]');
-const output = document.querySelector('.price-output');
+const output = document.querySelector(".price-output");
 
-const btn = document.querySelector('.header__btn');
-const card__main__container = document.querySelector('.card__main__Container');
-const basket = document.querySelector('.basket__container');
-const Action = document.querySelector('.Action');
-const amount = document.querySelector('.total-amount');
-const itemm = document.querySelector('.itemm');
+const btn = document.querySelector(".header__btn");
+const card__main__container = document.querySelector(".card__main__Container");
+const basket = document.querySelector(".basket__container");
+const Action = document.querySelector(".Action");
+const amount = document.querySelector(".total-amount");
+const itemm = document.querySelector(".itemm");
 
 function cartSum() {
     let sum = 0;
-    document.querySelectorAll('.count').forEach(el => {
+    document.querySelectorAll(".count").forEach((el) => {
         sum += +el.innerHTML;
     });
     if (sum == 1) {
@@ -28,7 +28,7 @@ function cartSum() {
 function counterYes(id) {
     let counter = 0;
     amount.innerHTML = counter;
-    document.querySelectorAll('.amount__price').forEach(el => {
+    document.querySelectorAll(".amount__price").forEach((el) => {
         if (id && el.classList[1] == id[0] && +id > 1) {
             counter += +el.innerHTML * +id[1];
         }
@@ -38,8 +38,8 @@ function counterYes(id) {
 }
 
 function CreateCardInCart(commit, id) {
-    let div = document.createElement('div');
-    div.classList.add('Cart-Itemm');
+    let div = document.createElement("div");
+    div.classList.add("Cart-Itemm");
     let price = +commit.price_product * +id[1];
     div.innerHTML = `
     <div class="first__container">
@@ -65,30 +65,41 @@ function CreateCardInCart(commit, id) {
     return div;
 }
 
-btn.addEventListener('click', async (evt) => {
-    basket.classList.add('basket__active');
+btn.addEventListener("click", async (evt) => {
+    basket.classList.add("basket__active");
     while (card__main__container.firstChild) {
         card__main__container.firstChild.remove();
     }
     counterYes();
     if (document.cookie) {
-        let arr = document.cookie.split('; ');
+        let arr = document.cookie.split("; ");
         arr.forEach(async (id) => {
-            id = id.split('=');
+            id = id.split("=");
             if (!isNaN(+id[0])) {
-                await fetch('/api/product/' + id[0]).then((res) => {
-                    return res.json();
-                }).then((data) => {
-                    card__main__container.appendChild(CreateCardInCart(data, id));
-                    counterYes(id);
-                    cartSum();
-                });
+                await fetch("/api/product/" + id[0])
+                    .then((res) => {
+                        return res.json();
+                    })
+                    .then((data) => {
+                        card__main__container.appendChild(
+                            CreateCardInCart(data, id)
+                        );
+                        counterYes(id);
+                        cartSum();
+                    });
             }
         });
     }
-    const buttonClean = document.querySelector('.clean');
-    buttonClean.addEventListener('click', (evt) => {
-        document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    const buttonClean = document.querySelector(".clean");
+    buttonClean.addEventListener("click", (evt) => {
+        document.cookie.split(";").forEach(function (c) {
+            document.cookie = c
+                .replace(/^ +/, "")
+                .replace(
+                    /=.*/,
+                    "=;expires=" + new Date().toUTCString() + ";path=/"
+                );
+        });
         while (card__main__container.firstChild) {
             card__main__container.firstChild.remove();
         }
@@ -96,47 +107,46 @@ btn.addEventListener('click', async (evt) => {
     });
 });
 Action.onclick = (evt) => {
-    basket.classList.remove('basket__active');
+    basket.classList.remove("basket__active");
 };
 const btn2 = document.querySelector('.inp__forms button[type="submit"]');
-
-
 
 window.onload = (evt) => {
     output.textContent = `до ${price.value} ₽`;
 };
-price.addEventListener('input', function (evt) {
+price.addEventListener("input", function (evt) {
     output.textContent = `до ${price.value} ₽`;
 });
 
 function getCookieValue(name) {
-    let result = document.cookie.match("(^|[^;]+)\\s*" + name + "\\s*=\\s*([^;]+)");
+    let result = document.cookie.match(
+        "(^|[^;]+)\\s*" + name + "\\s*=\\s*([^;]+)"
+    );
     return result ? result[0] : "";
 }
 
 function removeProductFromCart(id) {
     if (getCookieValue(id)) {
-        let arr = getCookieValue(id).split('=');
+        let arr = getCookieValue(id).split("=");
         document.cookie = `${arr[0]}=; SameSite=Lax; Secure; path=/; Max-Age=0;`;
-        basket.classList.remove('basket__active');
-        return alert('Товар успешно удалён');
+        basket.classList.remove("basket__active");
+        return alert("Товар успешно удалён");
     }
 }
 
 function addProductToCart(id) {
-
     if (getCookieValue(id)) {
-        let arr = getCookieValue(id).split('=');
+        let arr = getCookieValue(id).split("=");
         arr[1] = +arr[1] + 1;
         document.cookie = `${arr[0]}=${arr[1]}; SameSite=Lax; Secure; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-        return alert('Товар успешно добавлен в корзину');
+        return alert("Товар успешно добавлен в корзину");
     }
 
     if (document.cookie.length > 0) {
         document.cookie = `${id}=1; SameSite=Lax; Secure; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-        return alert('Товар успешно добавлен в корзину');
+        return alert("Товар успешно добавлен в корзину");
     }
 
     document.cookie = `${id}=1; SameSite=Lax; Secure; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-    return alert('Товар успешно добавлен в корзину');
+    return alert("Товар успешно добавлен в корзину");
 }

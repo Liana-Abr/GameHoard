@@ -2,11 +2,11 @@ let slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
-    showSlides(slideIndex += n);
+    showSlides((slideIndex += n));
 }
 
 function currentSlide(n) {
-    showSlides(slideIndex = n);
+    showSlides((slideIndex = n));
     let snd = new Audio("../sounds/file.wav"); // buffers automatically when created
     snd.play();
     return;
@@ -18,7 +18,7 @@ function showSlides(n) {
     let dots = document.getElementsByClassName("dot");
 
     if (n > slides.length) {
-        slideIndex = 1
+        slideIndex = 1;
     }
     if (n < 1) {
         slideIndex = slides.length;
