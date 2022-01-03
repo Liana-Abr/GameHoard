@@ -1,11 +1,11 @@
-const router = require("express").Router()
+const router = require("express").Router();
 
-const zakazController = require('../../controllers/zakazController.js')
+const zakazController = require("../../controllers/zakazController.js");
 
-router.post('/', zakazController.createZakaz)
-router.get('/', zakazController.getAllZakaz)
-router.get('/:id', zakazController.getZakaz)
-router.post('/update', zakazController.updateZakaz)
-router.post('/delete', zakazController.deleteZakaz)
+router.post("/", zakazController.createZakaz);
+router.get("/", zakazController.getAllZakaz);
+router.get("/:id", zakazController.getZakaz);
+router.post("/update", zakazController.updateZakaz);
+router.post("/delete", zakazController.deleteZakaz);
 
-module.exports = router
+module.exports = router;

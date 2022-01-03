@@ -1,24 +1,26 @@
-const db = require('../../db.js')
+const db = require("../../db.js");
 const nodemailer = require("nodemailer");
 
 class RassylkaController {
     async createRassylka(req, res) {
         const { email_rassylka } = req.body;
         const { url } = req.query;
-        const rassylka = await db.query('call rassylka_insert($1)', [email_rassylka]);
+        const rassylka = await db.query("call rassylka_insert($1)", [
+            email_rassylka,
+        ]);
         try {
             const transporter = nodemailer.createTransport({
-                service: 'gmail',
+                service: "gmail",
                 auth: {
                     user: process.env.SENDEMAIL,
-                    pass: process.env.SENDPASS
-                }
+                    pass: process.env.SENDPASS,
+                },
             });
             const mailOptions = {
                 from: process.env.SENDEMAIL,
                 to: email_rassylka,
-                subject: 'Рассылка GameHoard',
-                text: 'Спасибо, что подписались на рассылку!',
+                subject: "Рассылка GameHoard",
+                text: "Спасибо, что подписались на рассылку!",
                 html: `<!doctype html>
                 <html ⚡4email>
         
@@ -41,7 +43,7 @@ class RassylkaController {
                     магазин настольных игр <i>GameHoard</i>.</p>
                     </body>
         
-                </html>`
+                </html>`,
             };
             transporter.sendMail(mailOptions);
             res.redirect(`${url}`);
@@ -50,32 +52,41 @@ class RassylkaController {
         }
     }
     async getAllRassylka(req, res) {
-        const rassylka = await db.query('select * from rassylka')
-        res.json(rassylka.rows)
+        const rassylka = await db.query("select * from rassylka");
+        res.json(rassylka.rows);
     }
     async getRassylka(req, res) {
-        const id = req.params.id
-        const rassylka = await db.query('select * from rassylka where id_rassylka = $1', [id])
-        res.json(rassylka.rows[0])
+        const id = req.params.id;
+        const rassylka = await db.query(
+            "select * from rassylka where id_rassylka = $1",
+            [id]
+        );
+        res.json(rassylka.rows[0]);
     }
     async updateRassylka(req, res) {
         try {
-            const { id_rassylka, email_rassylka } = req.body
-            const rassylka = await db.query('call rassylka_update($1, $2)', [id_rassylka, email_rassylka])
-            res.redirect('/admin/rassylka')
+            const { id_rassylka, email_rassylka } = req.body;
+            const rassylka = await db.query("call rassylka_update($1, $2)", [
+                id_rassylka,
+                email_rassylka,
+            ]);
+            res.redirect("/admin/rassylka");
         } catch (err) {
             res.status(500).send(err);
         }
     }
     async deleteRassylka(req, res) {
         try {
-            const id = req.body.id
-            const rassylka = await db.query('delete from rassylka where id_rassylka = $1', [id])
-            res.redirect('/admin/rassylka');
+            const id = req.body.id;
+            const rassylka = await db.query(
+                "delete from rassylka where id_rassylka = $1",
+                [id]
+            );
+            res.redirect("/admin/rassylka");
         } catch (err) {
             res.status(500).send(err);
         }
     }
 }
 
-module.exports = new RassylkaController
+module.exports = new RassylkaController();

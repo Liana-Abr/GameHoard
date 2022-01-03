@@ -1,13 +1,27 @@
-const checkForSpecialChar = require('../scripts/checkForSpecialChar');
+const checkForSpecialChar = require("../scripts/checkForSpecialChar");
 
 module.exports = async function (req, res, next) {
     if (req.method === "OPTIONS") {
         next();
     }
     if (req.query) {
-        const { sale, newTovar, vremya_igry_product, name_product, izdatel_id, category_id, podcategory_id, min_igrok_product, vozrast_ogranich_product, min_price_product, max_price_product, min_vremya_igry_product, max_vremya_igry_product } = req.query;
+        const {
+            sale,
+            newTovar,
+            vremya_igry_product,
+            name_product,
+            izdatel_id,
+            category_id,
+            podcategory_id,
+            min_igrok_product,
+            vozrast_ogranich_product,
+            min_price_product,
+            max_price_product,
+            min_vremya_igry_product,
+            max_vremya_igry_product,
+        } = req.query;
         const arr = [];
-        let a = '';
+        let a = "";
         if (name_product) {
             if (!checkForSpecialChar(name_product)) {
                 arr.push(`name_product = ${name_product}`);
@@ -35,7 +49,9 @@ module.exports = async function (req, res, next) {
         }
         if (vozrast_ogranich_product) {
             if (!isNaN(+vozrast_ogranich_product)) {
-                arr.push(`vozrast_ogranich_product = ${vozrast_ogranich_product}`);
+                arr.push(
+                    `vozrast_ogranich_product = ${vozrast_ogranich_product}`
+                );
             }
         }
         if (min_price_product) {
@@ -66,11 +82,11 @@ module.exports = async function (req, res, next) {
         // if (newTovar == 'on') {
         //     arr.push(`date_vypusk_product < ${Date.now()} and date_vypusk_product > ${+Date.now() - 5}`);
         // }
-        if (sale == 'on') {
+        if (sale == "on") {
             arr.push(`skidka_product > 0`);
         }
         if (arr.length > 0) {
-            a = `where ${arr.join(' and ')}`;
+            a = `where ${arr.join(" and ")}`;
         }
         req.headers.check = a;
         next();
