@@ -140,6 +140,7 @@ router.get("/catalogue/product/:id", async (req, res) => {
         product: product.rows[0],
         links: links,
         catalogue_tabs: catalogue_tabs,
+        title: product.rows[0].name_product,
     });
 });
 router.get("/contacts", (req, res) => {
