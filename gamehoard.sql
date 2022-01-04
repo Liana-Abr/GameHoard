@@ -1,51 +1,48 @@
-drop table if exists Profile;
-drop table if exists Rassylka;
-drop table if exists Sklad;
-drop table if exists Slider;
-drop table if exists Zakaz_Product;
-drop table if exists Zakaz;
-drop table if exists Product;
-drop table if exists Podcategory;
-drop table if exists Akzii;
-drop table if exists Sposob_Oplaty;
-drop table if exists Izdatel;
-drop table if exists Category;
+-- drop table if exists Profile;
+-- drop table if exists Rassylka;
+-- drop table if exists Sklad;
+-- drop table if exists Slider;
+-- drop table if exists Zakaz_Product;
+-- drop table if exists Zakaz;
+-- drop table if exists Product;
+-- drop table if exists Podcategory;
+-- drop table if exists Akzii;
+-- drop table if exists Sposob_Oplaty;
+-- drop table if exists Izdatel;
+-- drop table if exists Category;
+-- 
+-- drop procedure if exists Category_Insert;
+-- drop procedure if exists Izdatel_Insert;
+-- drop procedure if exists Sposob_Oplaty_Insert;
+-- drop procedure if exists Akzii_Insert;
+-- drop procedure if exists Podcategory_Insert;
+-- drop procedure if exists Product_Insert;
+-- drop procedure if exists Zakaz_Insert;
+-- drop procedure if exists Zakaz_Product_Insert;
+-- drop procedure if exists Slider_Insert;
+-- drop procedure if exists Sklad_Insert;
+-- drop procedure if exists Rassylka_Insert;
+-- drop procedure if exists Profile_Insert;
+-- 
+-- drop procedure if exists Category_Update;
+-- drop procedure if exists Izdatel_Update;
+-- drop procedure if exists Sposob_Oplaty_Update;
+-- drop procedure if exists Akzii_Update;
+-- drop procedure if exists Podcategory_Update;
+-- drop procedure if exists Product_Update;
+-- drop procedure if exists Zakaz_Update;
+-- drop procedure if exists Zakaz_Product_Update;
+-- drop procedure if exists Slider_Update;
+-- drop procedure if exists Sklad_Update;
+-- drop procedure if exists Rassylka_Update;
+-- drop procedure if exists Profile_Update;
 
-drop procedure if exists Category_Insert;
-drop procedure if exists Izdatel_Insert;
-drop procedure if exists Sposob_Oplaty_Insert;
-drop procedure if exists Akzii_Insert;
-drop procedure if exists Podcategory_Insert;
-drop procedure if exists Product_Insert;
-drop procedure if exists Zakaz_Insert;
-drop procedure if exists Zakaz_Product_Insert;
-drop procedure if exists Slider_Insert;
-drop procedure if exists Sklad_Insert;
-drop procedure if exists Rassylka_Insert;
-drop procedure if exists Profile_Insert;
+-- drop procedure if exists Product_Set_Skidka;
+-- drop procedure if exists Sklad_Add_Prodano;
+-- drop procedure if exists Sklad_Add_Nalichie;
+-- drop procedure if exists Sklad_Sub_Nalichie;
 
-drop procedure if exists Category_Update;
-drop procedure if exists Izdatel_Update;
-drop procedure if exists Sposob_Oplaty_Update;
-drop procedure if exists Akzii_Update;
-drop procedure if exists Podcategory_Update;
-drop procedure if exists Product_Update;
-drop procedure if exists Zakaz_Update;
-drop procedure if exists Zakaz_Product_Update;
-drop procedure if exists Slider_Update;
-drop procedure if exists Sklad_Update;
-drop procedure if exists Rassylka_Update;
-drop procedure if exists Profile_Update;
-
-drop procedure if exists Product_Set_Skidka;
-drop procedure if exists Sklad_Add_Prodano;
-drop procedure if exists Sklad_Add_Nalichie;
-drop procedure if exists Sklad_Sub_Nalichie;
-
-
-
-
-
+---- СОЗДАНИЕ ТАБЛИЦ
 create table Category(
 	ID_Category serial not null constraint PK_Category primary key,
 	Name_Category varchar(50) not null constraint UQ_Name_Category unique
@@ -126,8 +123,7 @@ create table Profile (
 
 
 
-
-
+---- СОЗДАНИЕ ПРОЦЕДУР
 Create or replace procedure Category_Insert(p_Name_Category varchar(50))
 language plpgsql
 as $$
@@ -399,7 +395,7 @@ $$;
 
 
 
-
+---- ДОБАВЛЕНИЕ ДАННЫХ В ТАБЛИЦЫ ПРИ ПОМОЩИ ПРОЦЕДУР
 call category_insert('warhammer');
 call category_insert('ccg');
 call category_insert('rpgames');
@@ -410,6 +406,7 @@ call Podcategory_insert('mtg', 2);
 call Podcategory_insert('berserk', 2);
 call Podcategory_insert('dnd', 3);
 call Podcategory_insert('pf', 3);
+
 call Izdatel_insert('Games Workshop');
 call Izdatel_insert('Wizards of the Coast');
 
@@ -423,15 +420,16 @@ call product_insert('Warhammer 50000', 1, '2020-11-11', 1, 1, 4, 16,'Стоит 
 					знакомства с увлекательным миром отчаянных воинов и грандиозных сражений в тёмном мире далёкого 41-го тысячелетия!', 5990, 60, 'warhammer40kdrukhari.png');
 
 call product_insert('MTG Бустеры - Базовый выпуск 2019', 2, '2019-1-11', 2, 2, 2, 14, '6 драфт-бустеров выпуска ""Иннистрад: Багровая Клятва', 2990, 20, 'mtgbazoviy19.jpg');
+
 call product_set_skidka(1, 50);
 
-select * from product;
-select * from akzii;
-select * from category;
-select * from podcategory;
-select * from rassylka;
-select * from sklad;
-select * from slider;
+-- select * from product;
+-- select * from akzii;
+-- select * from category;
+-- select * from podcategory;
+-- select * from rassylka;
+-- select * from sklad;
+-- select * from slider;
 
 
 
