@@ -68,12 +68,12 @@ block body
                     .filters__checkbox
                         .checkbox
                             label(for="new") Новинка
-                            input(type="checkbox", name="newTovar")
+                            input(type="checkbox" name="newTovar")
                         .checkbox
                             label(for="sale") Со скидкой
-                            input(type="checkbox", name="sale")
+                            input(type="checkbox" name="sale")
                     .filters__submit
-                        input(type="submit", name="submit" value="Поиск")
+                        input(type="submit" value="Поиск").filtersSubmit
                 .sideblocks__daygame
                     h2 Игра дня
                     img(src='/images/' + daygame.Img_Product alt=daygame.Name_Product).daygame__img

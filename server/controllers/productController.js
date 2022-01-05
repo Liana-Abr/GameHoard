@@ -69,34 +69,34 @@ class ProductController {
         } = req.query;
         const arr = [];
         let a = "";
-        if (name_product) {
+        if (name_product && !checkForSpecialChar(name_product)) {
             arr.push(`name_product = ${name_product}`);
         }
-        if (izdatel_id) {
+        if (izdatel_id && !isNaN(+izdatel_id)) {
             arr.push(`izdatel_id = ${izdatel_id}`);
         }
-        if (category_id) {
+        if (category_id && !isNaN(+category_id)) {
             arr.push(`category_id = ${category_id}`);
         }
-        if (podcategory_id) {
+        if (podcategory_id && !isNaN(+podcategory_id)) {
             arr.push(`podcategory_id = ${podcategory_id}`);
         }
-        if (min_igrok_product) {
+        if (min_igrok_product && !isNaN(+min_igrok_product)) {
             arr.push(`min_igrok_product = ${min_igrok_product}`);
         }
-        if (vozrast_ogranich_product) {
+        if (vozrast_ogranich_product && !isNaN(+vozrast_ogranich_product)) {
             arr.push(`vozrast_ogranich_product = ${vozrast_ogranich_product}`);
         }
-        if (min_price_product) {
+        if (min_price_product && !isNaN(+min_price_product)) {
             arr.push(`price_product > ${min_price_product}`);
         }
-        if (max_price_product > 0) {
+        if (max_price_product > 0 && !isNaN(+max_price_product)) {
             arr.push(`price_product < ${max_price_product}`);
         }
-        if (min_vremya_igry_product) {
+        if (min_vremya_igry_product && !isNaN(+min_vremya_igry_product)) {
             arr.push(`vremya_igry_product > ${min_vremya_igry_product}`);
         }
-        if (max_vremya_igry_product) {
+        if (max_vremya_igry_product && !isNaN(+max_vremya_igry_product)) {
             arr.push(`vremya_igry_product < ${max_vremya_igry_product}`);
         }
         if (arr.length > 0) {

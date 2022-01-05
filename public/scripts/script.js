@@ -1,7 +1,5 @@
 const price = document.querySelector('input[name="max_price_product"]');
-const submit = document.querySelector('.filters__submit input[name="submit"]');
 const output = document.querySelector(".price-output");
-
 const btn = document.querySelector(".header__btn");
 const card__main__container = document.querySelector(".card__main__Container");
 const basket = document.querySelector(".basket__container");
