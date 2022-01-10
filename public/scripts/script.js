@@ -103,6 +103,7 @@ btn.addEventListener("click", async (evt) => {
             card__main__container.firstChild.remove();
         }
         counterYes();
+        cartSum();
     });
 });
 Action.onclick = (evt) => {
