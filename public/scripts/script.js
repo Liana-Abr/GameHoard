@@ -69,6 +69,7 @@ btn.addEventListener("click", async (evt) => {
         card__main__container.firstChild.remove();
     }
     counterYes();
+    cartSum();
     if (document.cookie) {
         let arr = document.cookie.split("; ");
         arr.forEach(async (id) => {
