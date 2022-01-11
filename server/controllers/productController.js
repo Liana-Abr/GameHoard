@@ -122,7 +122,7 @@ class ProductController {
 //         const val = req.sanitize(req.headers.value);
         if (!checkForSpecialChar(val)) {
             const product = await db.query(
-                `select * from product where lower(name_product) like lower('${val}%')`
+                `select * from product where lower(name_product) ~ lower('${val}%')`
             );
             res.json(product.rows);
         }
